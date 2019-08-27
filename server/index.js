@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
 app.use(express.json());
-const {SERVER_PORT, SESSION_SECRET} = process.env;
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -13,22 +13,26 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 14 //2 weeks
     }
-}))
+}));
 
+mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useCreateIndex: true })
+.then(() => {
+    console.log('MongoDB connection successful')
+});
 
 //Auth endpoints
-app.post(`/auth/login`)
-app.post(`/auth/register`)
-app.get(`/auth/logout`)
-app.delete(`/auth/delete_user`)
-app.put(`/auth/edit_user`)
-app.get(`/auth/edit_user`)
+app.post(`/auth/login`);
+app.post(`/auth/register`);
+app.get(`/auth/logout`);
+app.delete(`/auth/delete_user`);
+app.put(`/auth/edit_user`);
+app.get(`/auth/edit_user`);
 
 //Listings endpoints
-app.post(`listings/create_listing`)
-app.put(`/listings/edit_listing`)
-app.delete(`/listings/delete_listing`)
-app.get(`/listings/get_all_listings`)
+app.post(`listings/create_listing`);
+app.put(`/listings/edit_listing`);
+app.delete(`/listings/delete_listing`);
+app.get(`/listings/get_all_listings`);
 
 
 
