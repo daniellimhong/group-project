@@ -99,16 +99,22 @@ Users Schema:
 - Username
 - Password
 - Email
+- Listings = [Listing Id's]
 
 Listings: 
 - Listing ID
-- Make
-- Model
+- User Id
+- Car = {
+    - Make
+    - Model
+    - Trim
+    - Mileage
+}
 - Price
 - Zip Code
 - Picture
-- Mileage
-- Trim
+
+
 
 
 
