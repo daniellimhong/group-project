@@ -2,15 +2,37 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 12;
 
-const userSchema = new Schema({
-    userId: {
+const listingSchema = new mongoose.Schema({
+    car: {
+        year: { type: Number, required: true},
+        make: { type: String, required: true},
+        model: { type: String, required: true},
+        trim: { type: String, required: true},
+        mileage: { type: Number, required: true}
+    },
+    price:{
         type: Number,
         required: true
     },
+    zip:{
+        type: Number,
+        required: true
+    },
+    date_added:{
+        type: Date,
+        default: Date().toLocaleString()
+    }
+    // ,
+    // photo:{
+    //! Upload profile pic link and save ID directly LINK: https://stackoverflow.com/questions/44803800/how-to-store-profile-pictures-in-nodejs-mongodb 
+    // }
+})
 
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     password: {
@@ -28,9 +50,12 @@ const userSchema = new Schema({
                 return validEmail;
             }
         }
-    }
+    },
+
+    listings: [listingSchema]
 });
 
+// * Bcrypt 
 userSchema.pre(save, function(next) { 
     var user = this;
 
