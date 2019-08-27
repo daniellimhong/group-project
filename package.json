@@ -1,8 +1,14 @@
 {
   "name": "wpx-13-group-project",
   "version": "0.1.0",
+  "main": "server/index.js",
   "private": true,
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.6.11",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
