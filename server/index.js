@@ -33,8 +33,8 @@ app.get(`/auth/edit_user`);
 const listingsController = require('./Controller/ListingsController')
 const { getAllListings, createNewListing } = listingsController;
 app.post('/listings/create_listing', createNewListing);
-app.put(`/listings/edit_listing`);
-app.delete(`/listings/delete_listing`);
+app.put('/listings/edit_listing');
+app.delete('/listings/delete_listing');
 app.get('/listings/get_all_listings', getAllListings);
 
 
