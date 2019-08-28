@@ -23,14 +23,34 @@ module.exports = {
     },
 
     register: (req, res) => {
-        const { userName, email, password } = req.body;
+        const { userName, password, email } = req.body;
         const saltRounds = 12
         bcrypt.genSalt(saltRounds).then(salt => {
             bcrypt.hash(typedPassword, salt).then(hashedPassword => {
                 const user = new User({
-                    
+                    username: userName,
+                    password: password,
+                    email: email
+                });
+                user.save(err => {
+                    if (err) {
+                        res.status(400).send("the server did not save the information", console.log(err))
+                    }
+                users.find({ email: email }).then(user => {
+                    req.session.user = user[0].username;
+                    res.status(200).send(req.session.user)
+                })
                 })
             })
         })
+    },
+
+    logout: (req, res) => {
+        req.session.destroy();
+        res.status(200).send([])
+    },
+
+    userSession: (req, res) => {
+        res.status(200).send(req.session.user)
     }
 }
