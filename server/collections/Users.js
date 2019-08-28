@@ -83,8 +83,6 @@ const userSchema = new mongoose.Schema({
 //     })
 // }
 
-//! original export
-// module.exports = mongoose.model("users", userSchema)
 const user = mongoose.model("user", userSchema)
 const listing = mongoose.model("listing", listingSchema)
 module.exports = {
