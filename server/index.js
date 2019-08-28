@@ -24,19 +24,11 @@ app.use(
   })
 );
 
-<<<<<<< HEAD
 mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB connection successful')
 });
-=======
-mongoose
-  .connect(CONNECTION_STRING, { useNewUrlParser: true, useCreateIndex: true })
-  .then(() => {
-    console.log("MongoDB connection successful");
-  });
->>>>>>> authController-work
 
 //Auth endpoints
 app.post(`/auth/login`, login);
@@ -48,10 +40,12 @@ app.put(`/auth/edit_user`);
 app.get(`/auth/session`, userSession);
 
 //Listings endpoints
-app.post(`listings/create_listing`);
-app.put(`/listings/edit_listing`);
-app.delete(`/listings/delete_listing`);
-app.get(`/listings/get_all_listings`);
+const listingsController = require('./Controller/ListingsController')
+const { getAllListings, createNewListing } = listingsController;
+app.post('/listings/create_listing', createNewListing);
+app.put('/listings/edit_listing');
+app.delete('/listings/delete_listing');
+app.get('/listings/get_all_listings', getAllListings);
 
 app.listen(SERVER_PORT, () =>
   console.log(`listening on server port ${SERVER_PORT}`)
