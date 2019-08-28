@@ -1,12 +1,22 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      userName: "",
       password: ""
     };
+  }
+
+  login() {
+    const { userName, password } = this.state;
+    axios
+      .post(`/auth/login`, { userName: userName, password: password })
+      .then(res => {
+        // res.data
+      });
   }
 
   universalChangeHandler(property, value) {
@@ -37,7 +47,7 @@ export default class Login extends Component {
           />
         </div>
         <div>
-          <button onClick>Login</button>
+          <button onClick={e => this.login(e)}>Login</button>
         </div>
       </div>
     );
