@@ -15,8 +15,9 @@ app.use(session({
     }
 }));
 
-mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useCreateIndex: true })
-.then(() => {
+mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useCreateIndex: true });
+const connection = mongoose.connection;
+connection.once('open', () => {
     console.log('MongoDB connection successful')
 });
 
