@@ -21,20 +21,18 @@ class App extends Component {
       <div className="App">
         
         <Switch>
-          {/* <Route exact path="/" component={Home}/>
-          <Route path="/SearchCar" component={SearchCar}/>
+          <Route exact path="/" component={Home}/> 
+          {/* <Route path="/SearchCar" component={SearchCar}/>
           <Route path="/Register" component={Register}/>
           <Route path="/SellCar" component={SellCar}/>
           <Route path="/ForSale" component={ForSale}/>
           <Route path="/YourListing" component={YourListing}/>
           <Route path="/Contact" component={Contact}/>
-          <Route path="Profile" component={Profile}/> */}
+          <Route path="Profile" component={Profile}/> */} */}
         </Switch>
       </div>
 
-      <div>
-        <Login />
-      </div>
+     >
 
       </div>
     );
