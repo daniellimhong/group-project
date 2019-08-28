@@ -23,17 +23,19 @@ connection.once('open', () => {
 
 //Auth endpoints
 app.post(`/auth/login`);
-app.post(`/auth/register`);
+app.post('/auth/register');
 app.get(`/auth/logout`);
 app.delete(`/auth/delete_user`);
 app.put(`/auth/edit_user`);
 app.get(`/auth/edit_user`);
 
 //Listings endpoints
-app.post(`listings/create_listing`);
+const listingsController = require('./Controller/ListingsController')
+const { getAllListings, createNewListing } = listingsController;
+app.post('/listings/create_listing', createNewListing);
 app.put(`/listings/edit_listing`);
 app.delete(`/listings/delete_listing`);
-app.get(`/listings/get_all_listings`);
+app.get('/listings/get_all_listings', getAllListings);
 
 
 
