@@ -1,11 +1,13 @@
 const bcrypt = require("bcrypt");
-const users = require("../collections/Users");
+const models = require("../collections/Users");
+const {User} = models;
+
 
 module.exports = {
   login: (req, res) => {
     const { userName, password } = req.body;
 
-    users.find({ username: userName }).then(user => {
+    User.find({ username: userName }).then(user => {
       bcrypt.compare(password, user[0].password).then(matchingPassword => {
         if (matchingPassword) {
           req.session.user = {
@@ -14,7 +16,7 @@ module.exports = {
             }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
         } else {
-          res.status(401).send("wrong password"); // change this to "wrong username or password" once it is working
+          res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
       });
     });
