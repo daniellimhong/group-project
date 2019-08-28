@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     listings: [listingSchema]
 });
 
-// * Bcrypt 
+// // * Bcrypt 
 // userSchema.pre(save, function(next) { 
 //     var user = this;
 
@@ -83,12 +83,11 @@ const userSchema = new mongoose.Schema({
 //     })
 // }
 
+//! original export
+// module.exports = mongoose.model("users", userSchema)
 const user = mongoose.model("user", userSchema)
 const listing = mongoose.model("listing", listingSchema)
 module.exports = {
     User: user,
     Listing: listing
 };
-
-//! original export
-// module.exports = mongoose.model("users", userSchema)
