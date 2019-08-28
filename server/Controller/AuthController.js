@@ -1,6 +1,11 @@
 const bcrypt = require("bcrypt");
 const models = require("../collections/Users");
+<<<<<<< HEAD
 const { User } = models;
+=======
+const {User} = models;
+
+>>>>>>> b139a3ac0963a7fc07ed9b9e2afc8b01cd0d74ed
 
 module.exports = {
   login: (req, res) => {
@@ -15,7 +20,7 @@ module.exports = {
           }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
         } else {
-          res.status(401).send("wrong password"); // change this to "wrong username or password" once it is working
+          res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
       });
     });
