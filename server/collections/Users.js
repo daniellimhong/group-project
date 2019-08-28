@@ -55,32 +55,32 @@ const userSchema = new mongoose.Schema({
     listings: [listingSchema]
 });
 
-// * Bcrypt 
-userSchema.pre(save, function(next) { 
-    var user = this;
+// // * Bcrypt 
+// userSchema.pre(save, function(next) { 
+//     var user = this;
 
-    // only hash the password if it is new or modified
-    if (!user.isModified('password')) return next()
+//     // only hash the password if it is new or modified
+//     if (!user.isModified('password')) return next()
 
-    // generate salt
-    bcrypt.genSalt(SALT_ROUNDS, function(err, salt) {
-        if (err) return next(err);
+//     // generate salt
+//     bcrypt.genSalt(SALT_ROUNDS, function(err, salt) {
+//         if (err) return next(err);
         
-        bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
+//         bcrypt.hash(user.password, salt, function(err, hash) {
+//             if (err) return next(err);
 
-            //override cleartext password with hashed password
-            user.password = hash;
-            next();
-        })
-    })
-})
+//             //override cleartext password with hashed password
+//             user.password = hash;
+//             next();
+//         })
+//     })
+// })
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-        if (err) return cb(err)
-        cb(null, isMatch)
-    })
-}
+// userSchema.methods.comparePassword = function(candidatePassword, cb) {
+//     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+//         if (err) return cb(err)
+//         cb(null, isMatch)
+//     })
+// }
 
 module.exports = mongoose.model("users", userSchema)
