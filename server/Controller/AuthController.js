@@ -1,17 +1,18 @@
 const bcrypt = require("bcrypt");
-const users = require("../collections/Users");
+const models = require("../collections/Users");
+const { User } = models;
 
 module.exports = {
   login: (req, res) => {
     const { userName, password } = req.body;
 
-    users.find({ username: userName }).then(user => {
+    User.find({ username: userName }).then(user => {
       bcrypt.compare(password, user[0].password).then(matchingPassword => {
         if (matchingPassword) {
           req.session.user = {
-              username: user[0].username,
-              email: user[0].email
-            }; //console.log(user) this might be an error
+            username: user[0].username,
+            email: user[0].email
+          }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
         } else {
           res.status(401).send("wrong password"); // change this to "wrong username or password" once it is working
@@ -28,7 +29,7 @@ module.exports = {
     const saltRounds = 12;
     bcrypt.genSalt(saltRounds).then(salt => {
       bcrypt.hash(password, salt).then(hashedPassword => {
-        const user = new users({
+        const user = new User({
           username: userName,
           password: hashedPassword,
           email: email
@@ -40,7 +41,7 @@ module.exports = {
             });
           }
 
-          users.find({ email: email }).then(user => {
+          User.find({ email: email }).then(user => {
             console.log(user[0]);
             req.session.user = {
               username: user[0].username,
@@ -55,10 +56,36 @@ module.exports = {
 
   logout: (req, res) => {
     req.session.destroy();
-    res.status(200).send('user logged out, userSession destroyed');
+    res.status(200).send("user logged out, userSession destroyed");
   },
 
   userSession: (req, res) => {
     res.status(200).send(req.session.user);
+  },
+
+  editProfile: (req, res) => {
+    const { id } = req.params;
+    const { email } = req.query;
+
+    User.findById(id).then(foundUser => {
+      console.log("req.params", req.params);
+      foundUser.email = email;
+      foundUser.save(err => {
+        User.find().then(users => {
+          res.status(200).send(users);
+        });
+      });
+    });
+  },
+
+  deleteProfile: (req, res) => {
+    const { id } = req.params;
+
+    User.findByIdAndDelete(id).then(userDeletionInfo => {
+      console.log("userDeletionInfo", userDeletionInfo);
+      User.find().then(users => {
+        res.status(200).send(users);
+      });
+    });
   }
 };
