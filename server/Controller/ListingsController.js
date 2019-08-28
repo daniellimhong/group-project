@@ -18,9 +18,21 @@ module.exports = {
                 console.log(listings)
             })
         });
+    },
+    editListing: (req, res, next) => {
+        const { id } = req.params;
+        // const { car, price, zip } = req.body;
+
+        Listing.findById(id).then(foundListing => {
+            foundListing = req.body;
+
+            Listing.findById(id).then(listing => {
+                res.status(200).send(listing)
+                console.log(listing);
+            })
+        })
     }
     // ,
-    // editListing: 
-    // ,
     // deleteListing: 
+    // getUserListings:
 }

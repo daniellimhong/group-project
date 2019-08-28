@@ -21,8 +21,11 @@ connection.once('open', () => {
     console.log('MongoDB connection successful')
 });
 
+
 //Auth endpoints
-app.post(`/auth/login`);
+const authController = require("./Controller/AuthController");
+const { login } = authController;
+app.post('/auth/login', login);
 app.post('/auth/register');
 app.get(`/auth/logout`);
 app.delete(`/auth/delete_user`);
@@ -31,11 +34,12 @@ app.get(`/auth/edit_user`);
 
 //Listings endpoints
 const listingsController = require('./Controller/ListingsController')
-const { getAllListings, createNewListing } = listingsController;
+const { getAllListings, createNewListing, editListing } = listingsController;
 app.post('/listings/create_listing', createNewListing);
-app.put('/listings/edit_listing');
+app.put('/listings/edit_listing', editListing);
 app.delete('/listings/delete_listing');
 app.get('/listings/get_all_listings', getAllListings);
+app.get('/listings/get_user_listings')
 
 
 
