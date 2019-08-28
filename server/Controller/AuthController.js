@@ -1,11 +1,6 @@
 const bcrypt = require("bcrypt");
 const models = require("../collections/Users");
-<<<<<<< HEAD
 const { User } = models;
-=======
-const {User} = models;
-
->>>>>>> b139a3ac0963a7fc07ed9b9e2afc8b01cd0d74ed
 
 module.exports = {
   login: (req, res) => {
