@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {connect} from 'react-redux';
-import{getUser} from '../../redux/reducer';
+import{ getUser } from '../../redux/reducer';
+// import { withRouter } from "react-router-dom";
 
  class Login extends Component {
   constructor(props) {
@@ -14,9 +15,9 @@ import{getUser} from '../../redux/reducer';
   }
 
   login() {
-    const { userName, password } = this.state;
+    const { username, password } = this.state;
     axios
-     .post(`/auth/login`, { userName: userName, password: password})
+     .post(`/auth/login`, { username: username, password: password })
       .then(res => {
         console.log(res.data)
         if(res.data.message){

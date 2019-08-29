@@ -16,7 +16,7 @@ module.exports = {
             listings: user[0].listings
           }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
-          //   console.log(req.session.user) //! delete console.log later***
+            console.log(req.session.user) //! delete console.log later***
         } else {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
