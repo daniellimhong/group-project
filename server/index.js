@@ -31,20 +31,23 @@ connection.once('open', () => {
     console.log('MongoDB connection successful')
 });
 
+
 //Auth endpoints
-app.post(`/auth/login`, login);
-app.post(`/auth/register`, register);
-app.get(`/auth/logout`, logout);
-app.delete(`/auth/delete_user/:id`, deleteProfile);
-app.put(`/auth/edit_user/:id`, editProfile);
-// app.get(`/auth/edit_user`);
-app.get(`/auth/session`, userSession);
+app.post('/auth/login', login);
+app.post('/auth/register', register);
+app.get('/auth/logout', logout);
+app.delete('/auth/delete_user');
+app.put('/auth/edit_user');
+app.get('/auth/session', userSession);
 
 //Listings endpoints
-app.post(`listings/create_listing`);
-app.put(`/listings/edit_listing/:id`);
-app.delete(`/listings/delete_listing/:id`);
-app.get(`/listings/get_all_listings`);
+const listingsController = require('./Controller/ListingsController')
+const { getAllListings, getUserListings, createNewListing, editListing, deleteListing } = listingsController;
+app.get('/listings/get_all_listings', getAllListings);
+app.get('/listings/get_user_listings', getUserListings);
+app.post('/listings/create_listing', createNewListing);
+app.put('/listings/edit_listing/:id', editListing);
+app.delete('/listings/delete_listing/:id', deleteListing);
 
 app.listen(SERVER_PORT, () =>
   console.log(`listening on server port ${SERVER_PORT}`)

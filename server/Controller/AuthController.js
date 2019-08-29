@@ -11,9 +11,12 @@ module.exports = {
         if (matchingPassword) {
           req.session.user = {
             username: user[0].username,
-            email: user[0].email
+            email: user[0].email,
+            id: user[0]._id,
+            listings: user[0].listings
           }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
+          //   console.log(req.session.user) //! delete console.log later***
         } else {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
