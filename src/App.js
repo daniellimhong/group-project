@@ -35,11 +35,8 @@ class App extends Component {
             {/* {/* <Route path="/SearchCar" component={SearchCar}/> */}
             <Route path="/register" component={Register} />
             <Route path="/newlisting" component={NewListing} />
-<<<<<<< HEAD
-=======
             <Route path='/Listings' component={Listings} />
             {/* <Route path="/sellcar" component={SellCar}/> */}
->>>>>>> 49d395889a05361d8c65723ed7cabfb38e4dbca1
             {/* <Route path="/forsale" component={ForSale}/> */}
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
