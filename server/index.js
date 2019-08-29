@@ -36,8 +36,8 @@ connection.once('open', () => {
 app.post('/auth/login', login);
 app.post('/auth/register', register);
 app.get('/auth/logout', logout);
-app.delete('/auth/delete_user');
-app.put('/auth/edit_user');
+app.delete('/auth/delete_user', deleteProfile);
+app.put('/auth/edit_user', editProfile);
 app.get('/auth/session', userSession);
 
 //Listings endpoints
