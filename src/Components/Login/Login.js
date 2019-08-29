@@ -1,31 +1,29 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {connect} from 'react-redux';
-import{getUser} from '../../redux/reducer';
+import { connect } from "react-redux";
+import { getUser } from "../../redux/reducer";
 
- class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: "",
       password: ""
     };
-    
   }
 
   login() {
     const { userName, password } = this.state;
     axios
-     .post(`/auth/login`, { userName: userName, password: password})
+      .post(`/auth/login`, { userName: userName, password: password })
       .then(res => {
-        console.log(res.data)
-        if(res.data.message){
-          alert(res.data.message)
-        }
-        else{
+        console.log(res.data);
+        if (res.data.message) {
+          alert(res.data.message);
+        } else {
           this.props.getUser(res.data);
           // this.props.history.push('/')
-          alert(`You are logged in!`)
+          alert(`You are logged in!`);
         }
       });
   }
@@ -37,7 +35,7 @@ import{getUser} from '../../redux/reducer';
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div>
         <div>
@@ -66,18 +64,17 @@ import{getUser} from '../../redux/reducer';
   }
 }
 
-
-function mapReduxToProps(reduxState){
-  return reduxState
+function mapReduxToProps(reduxState) {
+  return reduxState;
 }
 
 const mapDispatchToProps = {
   getUser
-}
+};
 
 const connectInvoked = connect(
   mapReduxToProps,
   mapDispatchToProps
-)
+);
 
 export default connectInvoked(Login);
