@@ -1,18 +1,22 @@
 const bcrypt = require("bcrypt");
-const users = require("../collections/Users");
+const models = require("../collections/Users");
+const { User } = models;
 
 module.exports = {
   login: (req, res) => {
     const { userName, password } = req.body;
 
-    users.find({ username: userName }).then(user => {
+    User.find({ username: userName }).then(user => {
       bcrypt.compare(password, user[0].password).then(matchingPassword => {
         if (matchingPassword) {
           req.session.user = {
-              username: user[0].username,
-              email: user[0].email
-            }; //console.log(user) this might be an error
+            username: user[0].username,
+            email: user[0].email,
+            id: user[0]._id,
+            listings: user[0].listings
+          }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
+          //   console.log(req.session.user) //! delete console.log later***
         } else {
           res.status(401).send("wrong password"); // change this to "wrong username or password" once it is working
         }
@@ -55,7 +59,7 @@ module.exports = {
 
   logout: (req, res) => {
     req.session.destroy();
-    res.status(200).send('user logged out, userSession destroyed');
+    res.status(200).send("user logged out, userSession destroyed");
   },
 
   userSession: (req, res) => {

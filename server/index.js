@@ -32,22 +32,21 @@ connection.once('open', () => {
 
 
 //Auth endpoints
-app.post(`/auth/login`, login);
-app.post(`/auth/register`, register);
-app.get(`/auth/logout`, logout);
-app.delete(`/auth/delete_user`);
-app.put(`/auth/edit_user`);
-// app.get(`/auth/edit_user`);
-app.get(`/auth/session`, userSession);
+app.post('/auth/login', login);
+app.post('/auth/register', register);
+app.get('/auth/logout', logout);
+app.delete('/auth/delete_user');
+app.put('/auth/edit_user');
+app.get('/auth/session', userSession);
 
 //Listings endpoints
 const listingsController = require('./Controller/ListingsController')
-const { getAllListings, createNewListing, editListing } = listingsController;
-app.post('/listings/create_listing', createNewListing);
-app.put('/listings/edit_listing', editListing);
-app.delete('/listings/delete_listing');
+const { getAllListings, getUserListings, createNewListing, editListing, deleteListing } = listingsController;
 app.get('/listings/get_all_listings', getAllListings);
-app.get('/listings/get_user_listings')
+app.get('/listings/get_user_listings', getUserListings);
+app.post('/listings/create_listing', createNewListing);
+app.put('/listings/edit_listing/:id', editListing);
+app.delete('/listings/delete_listing/:id', deleteListing);
 
 app.listen(SERVER_PORT, () =>
   console.log(`listening on server port ${SERVER_PORT}`)
