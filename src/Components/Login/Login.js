@@ -13,9 +13,9 @@ class Login extends Component {
   }
 
   login() {
-    const {username, password } = this.state;
+    const { username, password } = this.state;
     axios
-      .post(`/auth/login`, {username: username, password: password })
+      .post(`/auth/login`, { username: username, password: password })
       .then(res => {
         console.log(res.data);
         if (res.data.message) {

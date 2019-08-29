@@ -4,9 +4,9 @@ const { User } = models;
 
 module.exports = {
   login: (req, res) => {
-    const { userName, password } = req.body;
+    const { username, password } = req.body;
 
-    User.find({ username: userName }).then(user => {
+    User.find({ username: username }).then(user => {
       bcrypt.compare(password, user[0].password).then(matchingPassword => {
         if (matchingPassword) {
           req.session.user = {
@@ -16,7 +16,7 @@ module.exports = {
             listings: user[0].listings
           }; //console.log(user) this might be an error
           res.status(200).send(req.session.user);
-          //   console.log(req.session.user) //! delete console.log later***
+            console.log(req.session.user) //! delete console.log later***
         } else {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
