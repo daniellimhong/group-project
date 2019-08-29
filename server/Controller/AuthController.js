@@ -28,12 +28,12 @@ module.exports = {
   },
 
   register: (req, res) => {
-    const { userName, password, email } = req.body;
+    const { username, password, email } = req.body;
     const saltRounds = 12;
     bcrypt.genSalt(saltRounds).then(salt => {
       bcrypt.hash(password, salt).then(hashedPassword => {
         const user = new User({
-          username: userName,
+          username: username,
           password: hashedPassword,
           email: email
         });
