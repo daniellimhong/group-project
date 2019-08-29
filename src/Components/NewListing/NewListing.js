@@ -12,23 +12,25 @@ class NewListing extends Component {
       model: "",
       trim: "",
       mileage: 0,
-      salePrice: 0,
-      zipCode: 10000
+      price: 0,
+      zip: 10000
     };
+    this.addListing = this.addListing.bind(this)
   }
+
   addListing(e) {
     e.preventDefault();
     axios
       .post("/listings/create_listing", {
         car: {
-          year: this.year,
-          make: this.make,
-          model: this.model,
-          trim: this.trim,
-          mileage: this.mileage
+          year: this.state.year,
+          make: this.state.make,
+          model: this.state.model,
+          trim: this.state.trim,
+          mileage: this.state.mileage
         },
-        price: this.salePrice,
-        zip: this.zipCode
+        price: this.state.salePrice,
+        zip: this.state.zipCode
       })
       .then(res => {
         this.props.getUser(res.data);
@@ -42,12 +44,14 @@ class NewListing extends Component {
   }
 
   render() {
-    const { year, make, model, trim, mileage, salePrice, zipCode } = this.state;
+    const { year, make, model, trim, mileage, price, zip } = this.state;
     console.log("Redux", this.props.user);
+    console.log("Year", this.state.year)
     return (
       <div>
         <div className="newListing-container">
           <form onSubmit={this.addListing}>
+              Year
             <input
               type="number"
               placeholder="Year"
@@ -60,6 +64,7 @@ class NewListing extends Component {
                 )
               }
             />
+            Make
             <input
               type="text"
               placeholder="Make"
@@ -72,6 +77,7 @@ class NewListing extends Component {
                 )
               }
             />
+            Model
             <input
               type="text"
               placeholder="Model"
@@ -84,6 +90,7 @@ class NewListing extends Component {
                 )
               }
             />
+            Trim
             <input
               type="text"
               placeholder="Trim"
@@ -96,6 +103,7 @@ class NewListing extends Component {
                 )
               }
             />
+            Mileage
             <input
               type="number"
               placeholder="Mileage"
@@ -108,11 +116,12 @@ class NewListing extends Component {
                 )
               }
             />
+            Price
             <input
               type="number"
               placeholder="Price"
               name="price"
-              value={salePrice}
+              value={price}
               onChange={event =>
                 this.universalChangeHandler(
                   event.target.name,
@@ -120,11 +129,12 @@ class NewListing extends Component {
                 )
               }
             />
+            ZipCode
             <input
               type="number"
               placeholder="ZipCode"
               name="zip"
-              value={zipCode}
+              value={zip}
               onChange={event =>
                 this.universalChangeHandler(
                   event.target.name,

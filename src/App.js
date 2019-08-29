@@ -5,7 +5,6 @@ import Home from "./Components/Home/Home";
 import SearchCar from "./Components/SearchCar/SearchCar";
 import Register from "./Components/Register/Register";
 import NewListing from "./Components/NewListing/NewListing";
-import SellCar from "./Components/SellCar/SellCar";
 import ForSale from "./Components/ForSale/ForSale";
 import YourListing from "./Components/YourListing/YourListing";
 import Contact from "./Components/Contact/Contact";
@@ -35,7 +34,6 @@ class App extends Component {
             {/* {/* <Route path="/SearchCar" component={SearchCar}/> */}
             <Route path="/register" component={Register} />
             <Route path="/newlisting" component={NewListing} />
-            {/* <Route path="/sellcar" component={SellCar}/> */}
             {/* <Route path="/forsale" component={ForSale}/> */}
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
