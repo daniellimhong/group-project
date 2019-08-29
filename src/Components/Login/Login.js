@@ -7,7 +7,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
+      username: "",
       password: ""
     };
   }
@@ -15,7 +15,7 @@ class Login extends Component {
   login() {
     const { username, password } = this.state;
     axios
-      .post(`/auth/login`, { userName: userName, password: password })
+      .post(`/auth/login`, { username: username, password: password })
       .then(res => {
         console.log(res.data);
         if (res.data.message) {
@@ -41,7 +41,7 @@ class Login extends Component {
         <div>
           <input
             placeholder="username"
-            name="userName"
+            name="username"
             type="username"
             onChange={e =>
               this.universalChangeHandler(e.target.name, e.target.value)
