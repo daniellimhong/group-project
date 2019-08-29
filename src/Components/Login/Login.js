@@ -1,21 +1,32 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {connect} from 'react-redux';
+import{getUser} from '../../redux/reducer';
 
-export default class Login extends Component {
+ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: "",
       password: ""
     };
+    
   }
 
   login() {
     const { userName, password } = this.state;
     axios
-      .post(`/auth/login`, { userName: userName, password: password })
+     .post(`/auth/login`, { userName: userName, password: password})
       .then(res => {
-        // res.data
+        console.log(res.data)
+        if(res.data.message){
+          alert(res.data.message)
+        }
+        else{
+          this.props.getUser(res.data);
+          // this.props.history.push('/')
+          alert(`You are logged in!`)
+        }
       });
   }
 
@@ -26,12 +37,13 @@ export default class Login extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div>
           <input
             placeholder="username"
-            name="username"
+            name="userName"
             type="username"
             onChange={e =>
               this.universalChangeHandler(e.target.name, e.target.value)
@@ -53,3 +65,19 @@ export default class Login extends Component {
     );
   }
 }
+
+
+function mapReduxToProps(reduxState){
+  return reduxState
+}
+
+const mapDispatchToProps = {
+  getUser
+}
+
+const connectInvoked = connect(
+  mapReduxToProps,
+  mapDispatchToProps
+)
+
+export default connectInvoked(Login);

@@ -18,7 +18,7 @@ module.exports = {
           res.status(200).send(req.session.user);
           //   console.log(req.session.user) //! delete console.log later***
         } else {
-          res.status(401).send("wrong password"); // change this to "wrong username or password" once it is working
+          res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
       });
     });
@@ -64,5 +64,31 @@ module.exports = {
 
   userSession: (req, res) => {
     res.status(200).send(req.session.user);
+  },
+
+  editProfile: (req, res) => {
+    const { id } = req.params;
+    const { email } = req.query;
+
+    User.findById(id).then(foundUser => {
+      console.log("req.params", req.params);
+      foundUser.email = email;
+      foundUser.save(err => {
+        User.find().then(users => {
+          res.status(200).send(users);
+        });
+      });
+    });
+  },
+
+  deleteProfile: (req, res) => {
+    const { id } = req.params;
+
+    User.findByIdAndDelete(id).then(userDeletionInfo => {
+      console.log("userDeletionInfo", userDeletionInfo);
+      User.find().then(users => {
+        res.status(200).send(users);
+      });
+    });
   }
 };
