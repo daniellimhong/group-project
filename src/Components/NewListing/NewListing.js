@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
+import { connect } from "react-redux";
+import { getUser } from "../../redux/reducer";
 
-export default class NewListing extends Component {
+class NewListing extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,17 +18,21 @@ export default class NewListing extends Component {
   }
   addListing(e) {
     e.preventDefault();
-    axios.post("/listings/create_listing", {
-      car: {
-        year: this.year,
-        make: this.make,
-        model: this.model,
-        trim: this.trim,
-        mileage: this.mileage
-      },
-      price: this.salePrice,
-      zip: this.zipCode
-    });
+    axios
+      .post("/listings/create_listing", {
+        car: {
+          year: this.year,
+          make: this.make,
+          model: this.model,
+          trim: this.trim,
+          mileage: this.mileage
+        },
+        price: this.salePrice,
+        zip: this.zipCode
+      })
+      .then(res => {
+        this.props.getUser(res.data);
+      });
   }
 
   universalChangeHandler(property, value) {
@@ -37,7 +43,7 @@ export default class NewListing extends Component {
 
   render() {
     const { year, make, model, trim, mileage, salePrice, zipCode } = this.state;
-    console.log("userSession", req.session.user)
+    console.log("Redux", this.props.user);
     return (
       <div>
         <div className="newListing-container">
@@ -133,3 +139,18 @@ export default class NewListing extends Component {
     );
   }
 }
+
+function mapReduxToProps(reduxState) {
+  return reduxState;
+}
+
+const mapDispatchToProps = {
+  getUser
+};
+
+const connectInvoked = connect(
+  mapReduxToProps,
+  mapDispatchToProps
+);
+
+export default connectInvoked(NewListing);
