@@ -42,8 +42,8 @@ class App extends Component {
             {/* <Route path="/forsale" component={ForSale}/> */}
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
-            {/* <Route path="profile" component={Profile}/> */}
-            <Route path="/editprofile" component={EditProfile} />
+            <Route path="/profile" component={Profile}/> 
+            {/* <Route path="/editprofile" component={EditProfile} /> */}
           </Switch>
         </div>
       </div>

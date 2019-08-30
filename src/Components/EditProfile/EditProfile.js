@@ -60,9 +60,10 @@ class EditProfile extends Component {
     const { email } = this.state;
     return (
       <div>
+        Edit Profile: 
           {this.props.user ? (
         <div>
-          <p>Current Email: {this.props.user.email}</p>
+          {/* <p>Current Email: {this.props.user.email}</p> */}
           <form onSubmit={e => this.changeEmail(e)}>
             <input
               placeholder="New Email"

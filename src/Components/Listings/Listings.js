@@ -28,6 +28,7 @@ export default class Listings extends Component {
             <h1>Make:{listings.car.make}</h1>
             <h1>Model:{listings.car.model}</h1>
             <h1>Trim:{listings.car.trim}</h1>
+            {/* Change H1 tags to something else */}
           </div>
         )
       })
