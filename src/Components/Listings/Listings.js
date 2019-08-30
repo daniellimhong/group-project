@@ -30,12 +30,9 @@ export default class Listings extends Component {
             <h1>Make:{listings.car.make}</h1>
             <h1>Model:{listings.car.model}</h1>
             <h1>Trim:{listings.car.trim}</h1>
-<<<<<<< HEAD
             {/* Change H1 tags to something else */}
-=======
             <img src={listings.photos[0]} />
             <br />
->>>>>>> addPhoto
           </div>
         )
       })
