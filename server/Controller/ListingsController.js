@@ -10,7 +10,7 @@ module.exports = {
   },
   createNewListing: (req, res, next) => {
     const { car, price, zip } = req.body;
-    const newListing = new Listing({ car, price, zip });
+    const newListing = new Listing({ car, price, zip, photos });
 
     newListing.save(err => {
       User.findById(req.session.user.id).then(currentUser => {
@@ -25,7 +25,7 @@ module.exports = {
 
   editListing: (req, res, next) => {
     const { id } = req.params;
-    const { car, price, zip } = req.body;
+    const { car, price, zip, photos } = req.body;
 
     User.findById(req.session.user.id).then(currentUser => {
       //* find Index
