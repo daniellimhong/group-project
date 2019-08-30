@@ -13,9 +13,10 @@ class NewListing extends Component {
       trim: "",
       mileage: 0,
       price: 0,
-      zip: 10000
+      zip: 10000,
+      file: null
     };
-    this.addListing = this.addListing.bind(this)
+    this.addListing = this.addListing.bind(this);
   }
 
   addListing(e) {
@@ -37,6 +38,39 @@ class NewListing extends Component {
       });
   }
 
+  submitFile = (event) => {
+    event.preventDefault();
+    if(!this.state.file){
+        alert('Please select a file!')
+    }
+    else {
+        const formData = new FormData();
+        formData.append('file', this.state.file[0]);
+        
+        console.log(`this is the file`, formData)
+        axios.post('/api/file_upload', formData,{
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }}).then(response => {
+            console.log(response)
+            this.setState({
+                file: response.data.Location,
+                loading: false
+            })
+          // handle your response;
+        }).catch(error => {
+            console.log(error)
+          // handle your error
+        });
+
+    }
+ 
+  }
+
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files});
+  }
+
   universalChangeHandler(property, value) {
     this.setState({
       [property]: value
@@ -46,12 +80,12 @@ class NewListing extends Component {
   render() {
     const { year, make, model, trim, mileage, price, zip } = this.state;
     console.log("Redux", this.props.user);
-    console.log("Year", this.state.year)
+    console.log("Year", this.state.year);
     return (
       <div>
         <div className="newListing-container">
           <form onSubmit={this.addListing}>
-              Year
+            Year
             <input
               type="number"
               placeholder="Year"
@@ -143,7 +177,17 @@ class NewListing extends Component {
               }
             />
             <input type="submit" value="Submit" />
+           
           </form>
+
+          <form onSubmit={this.submitFile}>
+              <input
+                label="upload file"
+                type="file"
+                onChange={this.handleFileUpload}
+              />
+              <button type="submit">Send</button>
+            </form>
         </div>
       </div>
     );
