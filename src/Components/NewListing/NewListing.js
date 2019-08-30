@@ -19,9 +19,40 @@ class NewListing extends Component {
     this.addListing = this.addListing.bind(this);
   }
 
-  addListing(e) {
+  async addListing(e) {
     e.preventDefault();
-    axios
+    if (!this.state.file) {
+      alert("Please select a file!");
+    } else {
+      const formData = new FormData();
+      formData.append("file", this.state.file[0]);
+
+      // console.log(`this is the file`, formData);
+
+      // upload the image first
+      await axios
+        .post("/api/file_upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        // update state with the image file location
+        .then(response => {
+          console.log(response);
+          this.setState({
+            file: response.data.Location,
+            loading: false
+          });
+          // handle your response;
+        })
+        .catch(error => {
+          console.log(error);
+          // handle your error
+        });
+    }
+
+    // send state to the database
+    await axios
       .post("/listings/create_listing", {
         car: {
           year: this.state.year,
@@ -30,46 +61,47 @@ class NewListing extends Component {
           trim: this.state.trim,
           mileage: this.state.mileage
         },
-        price: this.state.salePrice,
-        zip: this.state.zipCode
+        price: this.state.price,
+        zip: this.state.zip,
+        photos: this.state.file
       })
       .then(res => {
         this.props.getUser(res.data);
       });
   }
 
-  submitFile = (event) => {
-    event.preventDefault();
-    if(!this.state.file){
-        alert('Please select a file!')
-    }
-    else {
-        const formData = new FormData();
-        formData.append('file', this.state.file[0]);
-        
-        console.log(`this is the file`, formData)
-        axios.post('/api/file_upload', formData,{
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }}).then(response => {
-            console.log(response)
-            this.setState({
-                file: response.data.Location,
-                loading: false
-            })
-          // handle your response;
-        }).catch(error => {
-            console.log(error)
-          // handle your error
-        });
+  // submitFile = (event) => {
+  //   event.preventDefault();
+  //   if(!this.state.file){
+  //       alert('Please select a file!')
+  //   }
+  //   else {
+  //       const formData = new FormData();
+  //       formData.append('file', this.state.file[0]);
 
-    }
- 
-  }
+  //       console.log(`this is the file`, formData)
+  //       axios.post('/api/file_upload', formData,{
+  //           headers: {
+  //             'Content-Type': 'multipart/form-data'
+  //           }}).then(response => {
+  //           console.log(response)
+  //           this.setState({
+  //               file: response.data.Location,
+  //               loading: false
+  //           })
+  //         // handle your response;
+  //       }).catch(error => {
+  //           console.log(error)
+  //         // handle your error
+  //       });
 
-  handleFileUpload = (event) => {
-    this.setState({file: event.target.files});
-  }
+  //   }
+
+  // }
+
+  handleFileUpload = event => {
+    this.setState({ file: event.target.files });
+  };
 
   universalChangeHandler(property, value) {
     this.setState({
@@ -79,8 +111,9 @@ class NewListing extends Component {
 
   render() {
     const { year, make, model, trim, mileage, price, zip } = this.state;
-    console.log("Redux", this.props.user);
-    console.log("Year", this.state.year);
+    // console.log("Redux", this.props.user);
+    // console.log("Year", this.state.year);
+    console.log("current state", this.state);
     return (
       <div>
         <div className="newListing-container">
@@ -176,18 +209,19 @@ class NewListing extends Component {
                 )
               }
             />
+            Upload Image /(required/)
+            <input
+              label="upload file"
+              type="file"
+              onChange={this.handleFileUpload}
+            />
             <input type="submit" value="Submit" />
-           
           </form>
 
-          <form onSubmit={this.submitFile}>
-              <input
-                label="upload file"
-                type="file"
-                onChange={this.handleFileUpload}
-              />
+          {/* <form onSubmit={this.submitFile}>
+              
               <button type="submit">Send</button>
-            </form>
+            </form> */}
         </div>
       </div>
     );
