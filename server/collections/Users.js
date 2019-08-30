@@ -20,9 +20,9 @@ const listingSchema = new mongoose.Schema({
     type: Date,
     default: Date().toLocaleString()
   },
-  photo:{
-      type: [String]
-  }
+  photos: {
+    type: [String]
+    }
 });
 
 const userSchema = new mongoose.Schema({
