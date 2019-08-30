@@ -19,11 +19,11 @@ const listingSchema = new mongoose.Schema({
   date_added: {
     type: Date,
     default: Date().toLocaleString()
+  },
+  photos: {
+    type: [String]
+  // ! Upload profile pic link and save ID directly LINK: https://stackoverflow.com/questions/44803800/how-to-store-profile-pictures-in-nodejs-mongodb
   }
-  // ,
-  // photo:{
-  //! Upload profile pic link and save ID directly LINK: https://stackoverflow.com/questions/44803800/how-to-store-profile-pictures-in-nodejs-mongodb
-  // }
 });
 
 const userSchema = new mongoose.Schema({
