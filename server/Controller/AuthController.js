@@ -74,11 +74,16 @@ module.exports = {
       console.log("req.params", req.params);
       console.log(foundUser.email, email)
       foundUser.email = email;
+      
       foundUser.save(err => {
-        User.find().then(users => {
-          res.status(200).send(users);
-        });
-      });
+        req.session.user = {
+          username: foundUser.username,
+            email: foundUser.email,
+            id: foundUser._id,
+            listings: foundUser.listings
+        }
+          res.status(200).send(req.session.user)     
+      }); 
     });
   },
 
@@ -89,7 +94,7 @@ module.exports = {
       console.log("userDeletionInfo", userDeletionInfo);
       User.find().then(users => {
         res.status(200).send(users);
-      });
+      }).catch(err => console.log(err));
     });
   }
 };

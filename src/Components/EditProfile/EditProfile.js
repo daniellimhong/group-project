@@ -11,15 +11,20 @@ class EditProfile extends Component {
 
     this.state = {
       email: "",
+      currentEmail: "",
       deleteConfirmation: false
     };
   }
+
+  
 
   changeEmail(event) {
     event.preventDefault();
     const { email } = this.state;
 
     axios.put(`/auth/edit_user/${this.props.user.id}`, { email: email }).then(res => {
+      this.setState({ currentEmail: res.data })
+      console.log(res.data)
       this.props.getUser(res.data); 
       alert("Email succesfully changed");
     });
@@ -51,11 +56,13 @@ class EditProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.user.id)
+    console.log(this.props.user)
     const { email } = this.state;
     return (
       <div>
+          {this.props.user ? (
         <div>
+          <p>Current Email: {this.props.user.email}</p>
           <form onSubmit={e => this.changeEmail(e)}>
             <input
               placeholder="New Email"
@@ -91,7 +98,15 @@ class EditProfile extends Component {
               className="Delete-button"
               >Confirm Delete</button>
           </div>
-        </div>
+        </div>) : 
+          (
+            <div onClick={() => {
+              this.props.history.push("/");
+            }} 
+            className="Error-messsage-1">Uh-oh, looks looks like something went wrong here! Press on this to log back in!</div>
+          )
+          }{" "}
+        {/* Conditional Rendering */}
       </div>
     );
   }
