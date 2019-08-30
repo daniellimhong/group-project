@@ -68,10 +68,11 @@ module.exports = {
 
   editProfile: (req, res) => {
     const { id } = req.params;
-    const { email } = req.query;
+    const { email } = req.body;
 
     User.findById(id).then(foundUser => {
       console.log("req.params", req.params);
+      console.log(foundUser.email, email)
       foundUser.email = email;
       foundUser.save(err => {
         User.find().then(users => {
