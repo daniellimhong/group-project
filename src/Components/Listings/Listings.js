@@ -19,7 +19,9 @@ export default class Listings extends Component {
   }
 
   render(){
-   
+    // if (!this.props.getUser) {
+    //   return <></>; //this checks to see if redux has a user and if not
+    // }
       console.log(this.state.Listings)
       const listingsToDisplay = this.state.Listings.map((listings, index) => {
         return (
@@ -28,6 +30,8 @@ export default class Listings extends Component {
             <h1>Make:{listings.car.make}</h1>
             <h1>Model:{listings.car.model}</h1>
             <h1>Trim:{listings.car.trim}</h1>
+            <img src={listings.photos[0]} />
+            <br />
           </div>
         )
       })

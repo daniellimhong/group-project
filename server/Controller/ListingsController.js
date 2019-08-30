@@ -9,15 +9,21 @@ module.exports = {
     });
   },
   createNewListing: (req, res, next) => {
-    const { car, price, zip } = req.body;
+    const { car, price, zip, photos } = req.body;
     const newListing = new Listing({ car, price, zip, photos });
-
+    console.log(req.body)
     newListing.save(err => {
       User.findById(req.session.user.id).then(currentUser => {
         currentUser.listings.push(newListing);
-        currentUser.save(() => {
+        currentUser.save((err) => {
+          console.log(err)
           res.status(200).send(currentUser);
         });
+        console.log('')
+        console.log('')
+        console.log('')
+        console.log('')
+        console.log('')
         console.log(currentUser.listings);
       });
     });
