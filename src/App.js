@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-// import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
 import SearchCar from "./Components/SearchCar/SearchCar";
 import Register from "./Components/Register/Register";
 import NewListing from "./Components/NewListing/NewListing";
+import NavBar from './Components/NavBar/NavBar';
 // import ForSale from "./Components/ForSale/ForSale";
 // import YourListing from "./Components/YourListing/YourListing";
 // import Contact from "./Components/Contact/Contact";
@@ -32,6 +32,7 @@ class App extends Component {
     return (
       <div>
         <div className="App">
+          <NavBar/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/searchcar" component={SearchCar}/>

@@ -1,0 +1,57 @@
+
+
+   .directions{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+
+    h1{
+        font-family: 'F1';
+        font-size: 30px;
+        margin: 0 auto;
+    }
+   }
+
+   
+
+
+
+
+.register-container{
+    margin: 0 auto;
+    margin-top: 100px;
+    height: 50vh;
+    width: 30vw;
+    background: #ff0800;
+    border: 12px solid black;
+    border-radius: 10px;
+    
+    .register{
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        
+        input{
+            width: 230px;
+            padding: 12px 10px;
+            margin: 10px;
+            font-family: 'F1';
+            border: none;
+            border-radius: 4px;
+        }
+
+        button{
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            background: black;
+            color: white;
+            font-family: 'F1';
+            border: none;
+            border-radius: 4px;
+        }
+    }
+
+}
