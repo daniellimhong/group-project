@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import './Register.scss';
 
 class Register extends Component {
   constructor(props) {
@@ -38,7 +39,11 @@ class Register extends Component {
     const { username, password, email } = this.state;
     return (
     <div>
-        <div>
+      <div className='directions'>
+        <h1>Please register to create a profile</h1>
+      </div>
+        <div className='register-container'>
+          <div className='register'>
             <input
             placeholder="username"
             name="username"
@@ -66,9 +71,10 @@ class Register extends Component {
                 this.universalChangeHandler(e.target.name, e.target.value)
             }
             />
-        </div>
-        <div>
-            <button onClick={this.register}>Register</button>
+              
+                  <button onClick={this.register}>Register</button>
+              
+            </div>
         </div>
       </div>
     );
