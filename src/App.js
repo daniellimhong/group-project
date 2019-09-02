@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 // import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
-import SearchCar from "./Components/SearchCar/SearchCar";
+// import SearchCar from "./Components/SearchCar/SearchCar";
 import Register from "./Components/Register/Register";
 import NewListing from "./Components/NewListing/NewListing";
 // import ForSale from "./Components/ForSale/ForSale";
@@ -28,13 +28,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/searchcar" component={SearchCar}/>
+            {/* <Route path="/searchcar" component={SearchCar}/> */}
             <Route path="/register" component={Register} />
             <Route path="/newlisting" component={NewListing} />
             <Route path='/listings' component={Listings} />

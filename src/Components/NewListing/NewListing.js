@@ -7,13 +7,13 @@ class NewListing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      year: 0,
+      year: undefined,
       make: "",
       model: "",
       trim: "",
-      mileage: 0,
-      price: 0,
-      zip: 10000,
+      mileage: undefined,
+      price: undefined,
+      zip: undefined,
       file: null
     };
     this.addListing = this.addListing.bind(this);
@@ -118,7 +118,7 @@ class NewListing extends Component {
       <div>
         <div className="newListing-container">
           <form onSubmit={this.addListing}>
-            Year
+            
             <input
               type="number"
               placeholder="Year"
@@ -131,7 +131,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Make
+            
             <input
               type="text"
               placeholder="Make"
@@ -144,7 +144,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Model
+            
             <input
               type="text"
               placeholder="Model"
@@ -157,7 +157,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Trim
+            
             <input
               type="text"
               placeholder="Trim"
@@ -170,7 +170,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Mileage
+            
             <input
               type="number"
               placeholder="Mileage"
@@ -183,7 +183,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Price
+            
             <input
               type="number"
               placeholder="Price"
@@ -196,7 +196,7 @@ class NewListing extends Component {
                 )
               }
             />
-            ZipCode
+            
             <input
               type="number"
               placeholder="ZipCode"
@@ -209,7 +209,7 @@ class NewListing extends Component {
                 )
               }
             />
-            Upload Image /(required/)
+            Upload Image (required)
             <input
               label="upload file"
               type="file"

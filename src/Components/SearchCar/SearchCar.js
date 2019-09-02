@@ -10,7 +10,7 @@ class SearchCar extends Component {
       listings: [],
       filtered: [],
     //   searchByYear: 0,
-    //   searchByMake: "",
+      searchByMake: "",
     //   searchByModel: "",
     //   searchByTrim: "",
     //   searchByPrice: 0,
@@ -35,7 +35,7 @@ class SearchCar extends Component {
     let filteredListings = this.state.filteredListings;
    
       filteredListings = currentListings.filter(search => {
-          console.log("search", search)
+        //   console.log("search", search)
           return search.car.make === this.state.searchByMake
 
       });
@@ -43,6 +43,15 @@ class SearchCar extends Component {
     this.setState({
       filtered: filteredListings
     });
+    this.props.callbackFromParent(filteredListings)
+  }
+
+  resetForm(e) {
+      e.preventDefault();
+      this.setState({
+        searchByMake: ""
+      })
+      this.props.resetParent("")
   }
 
   universalChangeHandler(property, value) {
@@ -63,7 +72,7 @@ class SearchCar extends Component {
     //   zipRadius
     } = this.state;
     return (
-      <form onSubmit={e => this.searchFunction(e)}>
+      <form onSubmit={e => this.searchFunction(e)} onReset={e => this.resetForm(e)}>
         <input
           type="text"
           placeholder="Search by Make"
@@ -74,6 +83,7 @@ class SearchCar extends Component {
           }
         />
         <input type="submit" value="Search" />
+        <input type="reset" value="Reset" />
       </form>
     );
   }
