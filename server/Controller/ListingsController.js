@@ -8,6 +8,7 @@ module.exports = {
       console.log(listings);
     });
   },
+
   createNewListing: (req, res, next) => {
     const { car, price, zip, photos } = req.body;
     const newListing = new Listing({ car, price, zip, photos });
@@ -26,6 +27,14 @@ module.exports = {
         console.log('')
         console.log(currentUser.listings);
       });
+    });
+  },
+
+  getListing: (req, res, next) => {
+    const { id } = req.params;
+    Listing.findById(id).then(listing => {
+      res.status(200).send(listing);
+      console.log(listing);
     });
   },
 

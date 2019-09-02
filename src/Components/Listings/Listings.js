@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchCar from "../SearchCar/SearchCar";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Listings extends Component {
@@ -48,6 +49,9 @@ export default class Listings extends Component {
             <h1>Trim:{listings.car.trim}</h1>
             {/* Change H1 tags to something else */}
             <img src={listings.photos[0]} alt="" />
+            <Link to={`/listing/${listings._id}`}>
+            <button>View Listing</button>
+          </Link> 
             <br />
           </div>
         );
@@ -63,6 +67,9 @@ export default class Listings extends Component {
               <h1>Trim:{listings.car.trim}</h1>
               {/* Change H1 tags to something else */}
               <img src={listings.photos[0]} alt="" />
+              <Link to={`/listing/${listings._id}`}>
+            <button>View Listing</button>
+          </Link> 
               <br />
             </div>
           );

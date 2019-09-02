@@ -10,11 +10,12 @@ import NavBar from './Components/NavBar/NavBar';
 // import Contact from "./Components/Contact/Contact";
 import Profile from "./Components/Profile/Profile";
 import Listings from "./Components/Listings/Listings";
-import EditProfile from "./Components/EditProfile/EditProfile";
-import "./App.scss";
+// import EditProfile from "./Components/EditProfile/EditProfile";
+import ViewListing from "./Components/ViewListing/ViewListing";
 import Axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "./redux/reducer";
+import "./App.scss";
 
 class App extends Component {
   // constructor(props) {
@@ -45,6 +46,7 @@ class App extends Component {
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
             <Route path="/profile" component={Profile}/> 
+            <Route path="/listing/:id" component={ViewListing}/> 
             {/* <Route path="/editprofile" component={EditProfile} /> */}
           </Switch>
         </div>
