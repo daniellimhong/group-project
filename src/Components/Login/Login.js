@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import './Login.scss'
 
 class Login extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class Login extends Component {
     console.log(this.props);
     return (
       <div>
-        <div>
+        <div className='login-container'>
           <input
             placeholder="username"
             name="username"
@@ -56,7 +57,7 @@ class Login extends Component {
             }
           />
         </div>
-        <div>
+        <div className='login-button'>
           <button onClick={e => this.login(e)}>Login</button>
         </div>
       </div>
