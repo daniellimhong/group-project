@@ -1,0 +1,35 @@
+div{
+    width: 100%;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+
+    input{
+        padding: 7px;
+        margin: 5px;
+        border-radius: 5px;
+        border: none;
+        font-family: 'F1';
+        
+    }
+
+   .login-button{
+       display: flex;
+       flex-direction: column;
+       width: 15%;
+       align-items: center;
+       
+       button{
+           padding: 7px 25px;
+           background-color: black;
+           color: #EFEFEF;
+           font-family: 'F1';
+           border: none;
+           border-radius: 5px;
+       }
+   }
+}

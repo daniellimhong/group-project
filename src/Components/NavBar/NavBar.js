@@ -5,19 +5,21 @@ import "./NavBar.scss";
 
 export default function NavBar(props) {
   return (
-    <div>
-      <div>
-        <NavLink exact to="/forsale" activeClassName="active">
-          Cars For Sale
-        </NavLink>
-      </div>
-      <div>
-        <NavLink exact to="/newlisting" activeClassName="active">
-          Sell Your Car
-        </NavLink>
+    <div className='navbar-container'>
+      <div className='links-container'>
+        <div>
+          <NavLink exact to="/forsale" activeClassName="active">
+            Cars For Sale
+          </NavLink>
+        </div>
+        <div>
+          <NavLink exact to="/newlisting" activeClassName="active">
+            Sell Your Car
+          </NavLink>
+        </div>
       </div>
 
-      <div>
+      <div className='login-container'>
         <Login />
       </div>
     </div>

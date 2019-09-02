@@ -1,0 +1,28 @@
+
+
+.navbar-container{
+    height: 18vh;
+    width: 100%;
+    background-color: #ff0800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .links-container{
+        width: 33%;
+        display: flex;
+        justify-content: space-around;
+
+        a{
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 22px;
+            color: #EFEFEF;
+            font-family: 'F1';
+            margin-left: 20px;
+            
+        }
+       
+    }
+
+}
