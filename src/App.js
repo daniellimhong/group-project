@@ -11,6 +11,7 @@ import NewListing from "./Components/NewListing/NewListing";
 import Profile from "./Components/Profile/Profile";
 import Listings from "./Components/Listings/Listings";
 // import EditProfile from "./Components/EditProfile/EditProfile";
+import ViewListing from "./Components/ViewListing/ViewListing";
 import "./App.css";
 import Axios from "axios";
 import { connect } from "react-redux";
@@ -44,6 +45,7 @@ class App extends Component {
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
             <Route path="/profile" component={Profile}/> 
+            <Route path="/listing/:id" component={ViewListing}/> 
             {/* <Route path="/editprofile" component={EditProfile} /> */}
           </Switch>
         </div>

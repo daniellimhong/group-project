@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import ViewListing from "../ViewListing/ViewListing";
 
 export default class Listings extends Component {
   constructor(props) {
@@ -25,12 +27,15 @@ export default class Listings extends Component {
     const listingsToDisplay = this.state.Listings.map((listings, index) => {
       return (
         <div key={index}>
-          <h1>Year:{listings.car.year}</h1>
-          <h1>Make:{listings.car.make}</h1>
-          <h1>Model:{listings.car.model}</h1>
-          <h1>Trim:{listings.car.trim}</h1>
-          {/* Change H1 tags to something else */}
           <img src={listings.photos[0]} alt="" />
+          <h2>Year: {listings.car.year}</h2>
+          <h2>Make: {listings.car.make}</h2>
+          <h2>Model: {listings.car.model}</h2>
+          <h2>Trim: {listings.car.trim}</h2>
+          {/* <h2>Id: {listings._id}</h2> */}
+          <Link to={`/listing/${listings._id}`}>
+            <button>View Listing</button>
+          </Link> 
           <br />
         </div>
       );
