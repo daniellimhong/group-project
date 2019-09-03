@@ -20,7 +20,6 @@ export default class Listings extends Component {
       });
     this.setState({
       Listings: allListings,
-      allListings: allListings
     });
   }
 
@@ -38,6 +37,7 @@ export default class Listings extends Component {
 
   render() {
     // console.log("filteredFromChild", this.state.filteredListingsFromChild);
+
     let listingsToDisplay;
     if (!this.state.filteredListingsFromChild) {
       listingsToDisplay = this.state.Listings.map((listings, index) => {
