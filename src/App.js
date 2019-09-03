@@ -10,12 +10,8 @@ import NavBar from './Components/NavBar/NavBar';
 import Featured from "./Components/Featured/Featured"
 import Profile from "./Components/Profile/Profile";
 import Listings from "./Components/Listings/Listings";
-<<<<<<< HEAD
 // import EditProfile from "./Components/EditProfile/EditProfile";
 import ViewListing from "./Components/ViewListing/ViewListing";
-=======
-import "./App.scss";
->>>>>>> 8b041589e020ac940ad9bbeaa79951b4322e26fa
 import Axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "./redux/reducer";
@@ -50,11 +46,8 @@ class App extends Component {
             {/* <Route path="/yourlisting" component={YourListing}/> */}
             {/* <Route path="/contact" component={Contact}/> */}
             <Route path="/profile" component={Profile}/> 
-<<<<<<< HEAD
             <Route path="/listing/:id" component={ViewListing}/> 
             {/* <Route path="/editprofile" component={EditProfile} /> */}
-=======
->>>>>>> 8b041589e020ac940ad9bbeaa79951b4322e26fa
           </Switch>
         </div>
       </div>
