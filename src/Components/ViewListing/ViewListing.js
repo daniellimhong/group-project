@@ -42,17 +42,17 @@ class ViewListing extends Component {
     <div>
         {this.state.listing ? (
         <div>
-        <img src={listing.photos} alt="" />
-        <h2>Price: {listing.price}</h2>
-        <h2> Zip: {listing.zip} </h2>
+        <img className="View-listing-pic" src={listing.photos} alt="" />
+        <p>Price: ${listing.price}</p>
+        <p> Zip: {listing.zip} </p>
         {listing && listing.car && userInfo && userInfo.username &&
         <div>
-        <h2>Year: {listing.car.year} </h2>
-          <h2>Make: {listing.car.make}</h2>
-          <h2>Model: {listing.car.model}</h2>
-          <h2>Trim: {listing.car.trim}</h2>
-          <h2>Seller: {userInfo.username}</h2>
-          <h2>Date Added: {listing.date_added}</h2>
+        <p>Year: {listing.car.year} </p>
+          <p>Make: {listing.car.make}</p>
+          <p>Model: {listing.car.model}</p>
+          <p>Trim: {listing.car.trim}</p>
+          <p>Seller: {userInfo.username}</p>
+          <p>Date Added: {listing.date_added}</p>
           </div>
         }
         </div>

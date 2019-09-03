@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchCar from "../SearchCar/SearchCar";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./Listings.scss"
 
 export default class Listings extends Component {
   constructor(props) {
@@ -43,12 +44,13 @@ export default class Listings extends Component {
       listingsToDisplay = this.state.Listings.map((listings, index) => {
         return (
           <div key={index}>
-            <h1>Year:{listings.car.year}</h1>
-            <h1>Make:{listings.car.make}</h1>
-            <h1>Model:{listings.car.model}</h1>
-            <h1>Trim:{listings.car.trim}</h1>
-            {/* Change H1 tags to something else */}
-            <img src={listings.photos[0]} alt="" />
+            <img className="Mapped-listing-pic" src={listings.photos[0]} alt="" />
+            <p>Price: ${listings.price}</p>
+            <p>Year: {listings.car.year}</p>
+            <p>Make: {listings.car.make}</p>
+            <p>Model: {listings.car.model}</p>
+            <p>Trim: {listings.car.trim}</p>
+            
             <Link to={`/listing/${listings._id}`}>
             <button>View Listing</button>
           </Link> 
@@ -60,13 +62,14 @@ export default class Listings extends Component {
       listingsToDisplay = this.state.filteredListingsFromChild.map(
         (listings, index) => {
           return (
-            <div key={index}>
-              <h1>Year:{listings.car.year}</h1>
-              <h1>Make:{listings.car.make}</h1>
-              <h1>Model:{listings.car.model}</h1>
-              <h1>Trim:{listings.car.trim}</h1>
-              {/* Change H1 tags to something else */}
-              <img src={listings.photos[0]} alt="" />
+            <div className="Listing" key={index}>
+              <img className="Mapped-listing-pic" src={listings.photos[0]} alt="" />
+
+              <p>Year: {listings.car.year}</p>
+              <p>Make: {listings.car.make}</p>
+              <p>Model: {listings.car.model}</p>
+              <p>Trim: {listings.car.trim}</p>
+            
               <Link to={`/listing/${listings._id}`}>
             <button>View Listing</button>
           </Link> 
@@ -78,12 +81,12 @@ export default class Listings extends Component {
     }
 
     return (
-      <div>
+      <div className="Listings-main-container">
         <SearchCar
           callbackFromParent={this.myCallback}
           resetParent={this.resetCallback}
         />
-        <div>{listingsToDisplay}</div>
+        <div className="Listing-display">{listingsToDisplay.reverse()}</div>
       </div>
     );
   }
