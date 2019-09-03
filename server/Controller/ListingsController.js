@@ -92,5 +92,22 @@ module.exports = {
       let userListings = currentUser.listings;
       res.status(200).send(userListings);
     });
+  },
+
+  getUserContact: (req, res, next) => {
+    const { id } = req.params
+    // const { typed } = req.body;
+
+    User.find({ 'listings._id': id}).then(foundUser => {
+      console.log("the user is: " + foundUser)
+      console.log(id)
+      res.status(200).send(foundUser);
+    });
   }
+  // const { id } = req.params;
+  // Listing.findById(id).then(listing => {
+  //   res.status(200).send(listing);
+  //   console.log(listing); 
+  //* {listings: [{id}]}
+  
 };

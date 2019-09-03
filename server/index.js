@@ -67,9 +67,10 @@ app.get('/auth/session', userSession);
 
 //Listings endpoints
 const listingsController = require('./Controller/ListingsController')
-const { getAllListings, getUserListings, createNewListing, editListing, deleteListing, getListing } = listingsController;
+const { getAllListings, getUserListings, createNewListing, editListing, deleteListing, getListing, getUserContact } = listingsController;
 app.get('/listings/get_all_listings', getAllListings);
 app.get('/listings/get_user_listings', getUserListings);
+app.get('/listings/get_user_contact/:id', getUserContact)
 app.get('/listings/get_listing/:id', getListing)
 app.post('/listings/create_listing', createNewListing);
 app.put('/listings/edit_listing/:id', editListing);
