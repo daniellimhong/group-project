@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
 import './Login.scss'
@@ -23,10 +24,14 @@ class Login extends Component {
           alert(res.data.message);
         } else {
           this.props.getUser(res.data);
-          // this.props.history.push('/')
+          
           alert(`You are logged in!`);
         }
       });
+  }
+
+  reDirecttoRegister = () => {
+    this.props.history.push('/register')
   }
 
   universalChangeHandler(property, value) {
@@ -36,7 +41,7 @@ class Login extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    
     return (
       <div>
         <div className='login-container'>
@@ -59,6 +64,7 @@ class Login extends Component {
         </div>
         <div className='login-button'>
           <button onClick={e => this.login(e)}>Login</button>
+          <button onClick={this.reDirecttoRegister}>Register</button>
         </div>
       </div>
     );
@@ -78,4 +84,4 @@ const connectInvoked = connect(
   mapDispatchToProps
 );
 
-export default connectInvoked(Login);
+export default withRouter(connectInvoked(Login));
