@@ -19,7 +19,7 @@ div{
 
    .login-button{
        display: flex;
-       flex-direction: column;
+       justify-content: center;
        width: 15%;
        align-items: center;
        
@@ -30,6 +30,7 @@ div{
            font-family: 'F1';
            border: none;
            border-radius: 5px;
+           margin: 0 5px;
        }
    }
 }

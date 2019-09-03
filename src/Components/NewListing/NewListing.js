@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import './NewListing.scss'
 
 class NewListing extends Component {
   constructor(props) {
