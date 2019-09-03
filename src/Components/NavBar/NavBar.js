@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../Login/Login";
 import "./NavBar.scss";
+import {connect } from 'react-redux';
+import {getUser} from '../../redux/reducer';
 
-export default class NavBar extends Component {
+ class NavBar extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -12,18 +14,20 @@ export default class NavBar extends Component {
   }
 
   render(){
+    console.log('this redux', this.props)
     return (
       <div className='navbar-container'>
         <div className='links-container'>
           <div>
-            <NavLink exact to="/forsale" activeClassName="active">
+            <NavLink exact to="/Listings" activeClassName="active">
               Cars For Sale
             </NavLink>
           </div>
           <div>
-            <NavLink exact to="/newlisting" activeClassName="active">
-              Sell Your Car
-            </NavLink>
+            {this.props.user ? <NavLink exact to="/NewListing">Sell Your Car</NavLink>: alert("please login")}
+
+              
+            
           </div>
         </div>
   
@@ -35,3 +39,19 @@ export default class NavBar extends Component {
   }
   
 }
+
+
+function mapReduxToProps(reduxState) {
+  return reduxState;
+}
+
+const mapDispatchToProps = {
+  getUser
+};
+
+const connectInvoked = connect(
+  mapReduxToProps,
+  mapDispatchToProps
+);
+
+export default connectInvoked(NavBar);
