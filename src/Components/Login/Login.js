@@ -10,11 +10,12 @@ class Login extends Component {
     super(props);
     this.state = {
       username: "",
-      password: "",
-      showLogin: true
+      password: ""
+      
     };
   }
 
+  
   login() {
     const { username, password } = this.state;
     axios
@@ -25,10 +26,17 @@ class Login extends Component {
           alert(res.data.message);
         } else {
           this.props.getUser(res.data);
+        
           
-          alert(`You are logged in!`);
         }
       });
+  }
+
+  logout =() => {
+    axios.get('/auth/logout').then(res => {
+      this.props.getUser(null)
+      this.props.history.push('/')
+    })
   }
 
   reDirecttoRegister = () => {
@@ -42,31 +50,41 @@ class Login extends Component {
   }
 
   render() {
-    
+    // if (!this.props.user) {
+    //   return <></>; //this checks to see if redux has a user and if not returns nothing to allow componentDidMount to run first
+    // }
+    console.log('this is props',this.props.user)
     return (
       <div>
-        <div className='login-container'>
-          <input
-            placeholder="username"
-            name="username"
-            type="username"
-            onChange={e =>
-              this.universalChangeHandler(e.target.name, e.target.value)
-            }
-          />
-          <input
-            placeholder="password"
-            name="password"
-            type="password"
-            onChange={e =>
-              this.universalChangeHandler(e.target.name, e.target.value)
-            }
-          />
+        <div className= {!this.props.user ? "showLogin" : "hideLogin"}>
+       
+          <div className='login-container'>
+            <input
+              placeholder="username"
+              name="username"
+              type="username"
+              onChange={e =>
+                this.universalChangeHandler(e.target.name, e.target.value)
+              }
+            />
+            <input
+              placeholder="password"
+              name="password"
+              type="password"
+              onChange={e =>
+                this.universalChangeHandler(e.target.name, e.target.value)
+              }
+            />
+          </div>
+          <div className='login-button'>
+            <button onClick={e => this.login(e)}>Login</button>
+            <button onClick={this.reDirecttoRegister}>Register</button>
+          </div>
+          
         </div>
-        <div className='login-button'>
-          <button onClick={e => this.login(e)}>Login</button>
-          <button onClick={this.reDirecttoRegister}>Register</button>
-        </div>
+        <div className={this.props.user ? 'showLogout' : 'hideLogout' }>
+            <button onClick={this.logout}>Logout</button>
+          </div>
       </div>
     );
   }

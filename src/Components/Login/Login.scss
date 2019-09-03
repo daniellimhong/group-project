@@ -1,3 +1,25 @@
+
+.hideLogin{
+    display: none;
+}
+
+.hideLogout{
+    display: none;
+}
+
+.showLogout{
+    display: initial;
+    button{
+           padding: 7px 25px;
+           background-color: black;
+           color: #EFEFEF;
+           font-family: 'F1';
+           border: none;
+           border-radius: 5px;
+           margin: 0 5px;
+    }
+}
+
 div{
     width: 100%;
 }
