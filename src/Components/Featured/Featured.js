@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Featured.scss";
 
 export default class Featured extends Component {
   constructor(props) {
@@ -43,22 +44,21 @@ export default class Featured extends Component {
       trim: trim,
       photos: [photos]
     });
+    console.log(this.state.allListings);
   }
 
   render() {
-    console.log(
-      "all listings",
-      this.state.allListings[this.state.randomListingIndex]
-    );
-    console.log("random listing index", this.state.randomListingIndex);
-
     return (
-      <div>
-        <div>Year: {this.state.year}</div>
-        <div>make: {this.state.make}</div>
-        <div>model: {this.state.model}</div>
-        <div>trim: {this.state.trim}</div>
-        <div>photos: {[this.state.photos]}</div>
+      <div className="featured-component-container">
+        <img src={this.state.photos} />
+        <div className="car-properties">
+          <div className="featured-display-year">Year: {this.state.year}</div>
+          <div className="featured-display-make">Make: {this.state.make}</div>
+          <div className="featured-display-model">
+            Model: {this.state.model}
+          </div>
+          <div className="featured-display-trim">Trim: {this.state.trim}</div>
+        </div>
       </div>
     );
   }
