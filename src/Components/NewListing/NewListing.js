@@ -117,8 +117,9 @@ class NewListing extends Component {
     console.log("current state", this.state);
     return (
       <div>
+        <div className="title"><h1>Add a new listing</h1></div>
         <div className="newListing-container">
-          <form onSubmit={this.addListing}>
+          <form className="newlisting" onSubmit={this.addListing}>
             
             <input
               type="number"
@@ -210,13 +211,13 @@ class NewListing extends Component {
                 )
               }
             />
-            Upload Image (required)
-            <input
-              label="upload file"
+            <p>Upload Image (required)</p>
+            <input className="upload"
+              label="uploadfile"
               type="file"
               onChange={this.handleFileUpload}
             />
-            <input type="submit" value="Submit" />
+            <input className="submit" type="submit" value="Submit" />
           </form>
 
           {/* <form onSubmit={this.submitFile}>
