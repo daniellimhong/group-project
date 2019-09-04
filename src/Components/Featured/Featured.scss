@@ -21,6 +21,48 @@ img {
 }
 
 .car-properties{
-    margin: 0 auto;
-    width: auto;
+    // margin: 0 auto;
+    // width: auto;
+    justify-content: left;
+}
+
+.view-listing-button{
+    // width: 100px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1126px){
+    .featured-component-container{
+        display: flex;
+        flex-direction: column;
+        width: 25vw;
+        justify-content: center;
+        align-items: center;
+        // flex-direction: row
+        margin: 0 auto;
+        height: auto;
+    }
+
+    .featured-photo{
+        max-width: 414px;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+    }
+
+    .car-properties{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .view-listing-button{
+        // width: 100px;
+        margin-right: 10px;
+    }
+
+    .featured-display{
+        width: auto;
+    }
 }
