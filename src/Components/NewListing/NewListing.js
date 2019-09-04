@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
 import './NewListing.scss'
@@ -67,7 +69,11 @@ class NewListing extends Component {
         photos: this.state.file
       })
       .then(res => {
+        // let recent = length - 1
+        res.data.listings.reverse()
         this.props.getUser(res.data);
+        console.log(res.data.listings[0]._id)
+        this.props.history.push(`/listing/${res.data.listings[0]._id}`)
       });
   }
 
@@ -188,7 +194,9 @@ class NewListing extends Component {
               type="file"
               onChange={this.handleFileUpload}
             />
-            <input className="submit" type="submit" value="Submit" />
+            
+              <input className="submit" type="submit" value="Submit" />
+            
           </form>
 
           {/* <form onSubmit={this.submitFile}>
@@ -214,4 +222,4 @@ const connectInvoked = connect(
   mapDispatchToProps
 );
 
-export default connectInvoked(NewListing);
+export default withRouter(connectInvoked(NewListing));
