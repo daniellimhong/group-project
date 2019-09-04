@@ -50,6 +50,7 @@ export default class Listings extends Component {
             <p>Make: {listings.car.make}</p>
             <p>Model: {listings.car.model}</p>
             <p>Trim: {listings.car.trim}</p>
+            <p>Zip Code: {listings.zip}</p>
             
             <Link to={`/listing/${listings._id}`}>
             <button>View Listing</button>
@@ -64,11 +65,13 @@ export default class Listings extends Component {
           return (
             <div className="Listing" key={index}>
               <img className="Mapped-listing-pic" src={listings.photos} alt="" />
-
+              <p>Price: ${listings.price}</p>
               <p>Year: {listings.car.year}</p>
               <p>Make: {listings.car.make}</p>
               <p>Model: {listings.car.model}</p>
               <p>Trim: {listings.car.trim}</p>
+              <p>Zip Code: {listings.zip}</p>
+
             
               <Link to={`/listing/${listings._id}`}>
             <button>View Listing</button>
