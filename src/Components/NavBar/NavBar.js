@@ -29,7 +29,7 @@ class NavBar extends Component {
                 Sell Your Car
               </NavLink>
             ) : (
-              alert("please login")
+              ''
             )}
           </div>
 
@@ -39,7 +39,7 @@ class NavBar extends Component {
                 Profile
               </NavLink>
             ) : (
-              alert("please login")
+              ''
             )}
           </div>
         </div>
