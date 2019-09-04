@@ -71,35 +71,6 @@ class NewListing extends Component {
       });
   }
 
-  // submitFile = (event) => {
-  //   event.preventDefault();
-  //   if(!this.state.file){
-  //       alert('Please select a file!')
-  //   }
-  //   else {
-  //       const formData = new FormData();
-  //       formData.append('file', this.state.file[0]);
-
-  //       console.log(`this is the file`, formData)
-  //       axios.post('/api/file_upload', formData,{
-  //           headers: {
-  //             'Content-Type': 'multipart/form-data'
-  //           }}).then(response => {
-  //           console.log(response)
-  //           this.setState({
-  //               file: response.data.Location,
-  //               loading: false
-  //           })
-  //         // handle your response;
-  //       }).catch(error => {
-  //           console.log(error)
-  //         // handle your error
-  //       });
-
-  //   }
-
-  // }
-
   handleFileUpload = event => {
     this.setState({ file: event.target.files });
   };
@@ -114,7 +85,7 @@ class NewListing extends Component {
     const { year, make, model, trim, mileage, price, zip } = this.state;
     // console.log("Redux", this.props.user);
     // console.log("Year", this.state.year);
-    console.log("current state", this.state);
+    // console.log("current state", this.state);
     return (
       <div>
         <div className="title"><h1>Add a new listing</h1></div>
