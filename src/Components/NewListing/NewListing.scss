@@ -1,67 +1,73 @@
 
+.newlist-body{
+    height: 105vh;
+    background: #A9A9A9;
 
-  .title{
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-
-
-    h1{
-        font-family: 'F1';
-        font-size: 30px;
+    .title{
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    
+    
+        h1{
+            font-family: 'F1';
+            font-size: 30px;
+            margin: 0 auto;
+        }
+       }
+    
+    .newListing-container{
         margin: 0 auto;
-    }
-   }
-
-.newListing-container{
-    margin: 0 auto;
-    margin-top: 70px;
-    width: 60vw;
-    height: 90vh;
-    margin-bottom: 10vh;
-    display: flex;
-    flex-direction: column;
-    border: white 2px solid;
-
-    .newlisting{
-        margin-top: 7vh;
+        margin-top: 70px;
+        width: 60vw;
+        height: 80vh;
+        margin-bottom: 10vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-
-        input{
-            width: 230px;
-            padding: 12px 10px;
-            margin: 10px;
-            font-family: 'F1';
-            border: none;
-            border-radius: 4px;
-
-            
+        border: white 2px solid;
+    
+        .newlisting{
+            margin-top: 5vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+    
+            input{
+                width: 230px;
+                padding: 12px 10px;
+                margin: 10px;
+                font-family: 'F1';
+                border: none;
+                border-radius: 4px;
+    
+                
+            }
         }
+    }
+    
+    .submit{
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        background: black;
+        color: white;
+        font-family: 'F1';
+        border: none;
+        border-radius: 4px; 
+    }
+    
+    .upload{
+        font-family: 'F1';
+        background: #A9A9A9;
+    }
+    .uploadfile{
+        background: black;
+    }
+    
+    p{
+       font-family: 'F1';
+       font-size: 14px; 
     }
 }
 
-.submit{
-    padding: 12px 20px;
-    margin-bottom: 20px;
-    background: black;
-    color: white;
-    font-family: 'F1';
-    border: none;
-    border-radius: 4px; 
-}
-
-.upload{
-    font-family: 'F1';
-    background: #A9A9A9;
-}
-.uploadfile{
-    background: black;
-}
-
-p{
-   font-family: 'F1';
-   font-size: 14px; 
-}
+  

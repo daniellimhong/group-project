@@ -1,28 +1,76 @@
+.navbar-container {
+  height: 18vh;
+  width: 100%;
+  background-color: #ff0800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.links-container {
+    // width: 60%;
+  display: flex;
+  justify-content: space-around;
+}
 
-.navbar-container{
-    height: 18vh;
-    width: 100%;
-    background-color: #ff0800;
+a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 22px;
+  color: #efefef;
+  font-family: "F1";
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.home-button {
+  padding-top: 5px;
+  width: auto;
+}
+.for-sale-button {
+  padding-top: 5px;
+  width: auto;
+
+}
+.sell-car-button {
+  padding-top: 5px;
+  width: auto;
+
+}
+.profile-button {
+  padding-top: 5px;
+  width: auto;
+
+}
+
+@media screen and (max-width: 1126px) {
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #efefef;
+    font-family: "F1";
+    // margin-top: 20px;
+    // padding-bottom: 20px;
+  }
+
+  .links-container {
+    width: 60%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    // padding-bottom: 20px
+  }
 
-    .links-container{
-        width: 60%;
-        display: flex;
-        justify-content: space-around;
-
-        a{
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 22px;
-            color: #EFEFEF;
-            font-family: 'F1';
-            margin-left: 20px;
-            
-        }
-       
-    }
-
+  .home-button {
+    padding-top: 5px;
+  }
+  .for-sale-button {
+    padding-top: 5px;
+  }
+  .sell-car-button {
+    padding-top: 5px;
+  }
+  .profile-button {
+    padding-top: 5px;
+  }
 }

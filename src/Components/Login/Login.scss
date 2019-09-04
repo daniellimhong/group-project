@@ -1,58 +1,63 @@
-
-.hideLogin{
-    display: none;
+.hideLogin {
+  display: none;
 }
 
-.hideLogout{
-    display: none;
+.hideLogout {
+  display: none;
 }
 
-.showLogout{
-    display: initial;
-    button{
-           padding: 7px 25px;
-           background-color: black;
-           color: #EFEFEF;
-           font-family: 'F1';
-           border: none;
-           border-radius: 5px;
-           margin: 0 5px;
-    }
+.showLogout {
+  display: initial;
 }
 
-div{
-    width: 100%;
+button {
+  padding: 7px 25px;
+//   background-color: black;
+  color: #efefef;
+  font-family: "F1";
+  border: none;
+  border-radius: 5px;
+  //    margin: 0 5px;
 }
 
-.login-container{
-    display: flex;
-    flex-direction: column;
-    width: 15%;
-    align-items: center;
+div {
+  width: 100%;
+}
 
-    input{
-        padding: 7px;
-        margin: 5px;
-        border-radius: 5px;
-        border: none;
-        font-family: 'F1';
-        
-    }
+.login-container {
+  display: flex;
+  flex-direction: column;
+//   width: 15%;
+  align-items: center;
+}
 
-   .login-button{
-       display: flex;
-       justify-content: center;
-       width: 15%;
-       align-items: center;
-       
-       button{
-           padding: 7px 25px;
-           background-color: black;
-           color: #EFEFEF;
-           font-family: 'F1';
-           border: none;
-           border-radius: 5px;
-           margin: 0 5px;
-       }
-   }
+input {
+  padding: 7px;
+  // margin: 5px;
+  border-radius: 5px;
+  border: none;
+  font-family: "F1";
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+    //  width: 15%;
+  align-items: center;
+}
+
+button {
+    //  padding: 7px 25px;
+  background-color: black;
+  color: #efefef;
+  font-family: "F1";
+  border: none;
+  border-radius: 5px;
+  //    margin: 0 5px;
+}
+
+@media screen and (max-width: 1126px){
+    .showLogout {
+        padding-left: 125px;
+      }
 }
