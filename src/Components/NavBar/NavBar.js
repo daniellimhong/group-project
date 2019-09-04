@@ -18,11 +18,6 @@ class NavBar extends Component {
     return (
       <div className="navbar-container">
         <div className="links-container">
-        <div>
-            <NavLink exact to="/" activeClassName="active">
-              Home
-            </NavLink>
-          </div>
           <div>
             <NavLink exact to="/Listings" activeClassName="active">
               Cars For Sale
