@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
-import EditProfile from "../EditProfile/EditProfile"
+import { Link } from "react-router-dom";
+import EditProfile from "../EditProfile/EditProfile";
 import axios from "axios";
+import "./Profile.scss";
 
 class Profile extends Component {
   constructor(props) {
@@ -31,40 +33,57 @@ class Profile extends Component {
 
     const userListingsToDisplay = this.state.listings.map((listings, index) => {
       return (
-        <div key={index}>
-          <p>Listing #{index + 1}</p>
+        <div className="Profile-listing" key={index}>
+          <p className="Listing-title">Listing #{index + 1}</p>
           <img className="Mapped-listing-pic" src={listings.photos} alt="" />
-          <p>Year:{listings.car.year}</p>
-          <p>Make:{listings.car.make}</p>
-          <p>Model:{listings.car.model}</p>
-          <p>Trim:{listings.car.trim}</p>
-          <button 
-          onClick={(e) => {
-            e.preventDefault()
-            axios.delete(`/listings/delete_listing/${listings._id}`).then(res => {
-              this.setState({listings: res.data})
-              alert("Listing Deleted!");
-            })
-          }}
-          >Delete Listing</button>
+          <p>Price: ${listings.price}</p>
+          <p>Year: {listings.car.year}</p>
+          <p>Make: {listings.car.make}</p>
+          <p>Model: {listings.car.model}</p>
+          <p>Trim: {listings.car.trim}</p>
+          
+          <Link to={`/listing/${listings._id}`}>
+            <button>View Listing</button>
+          </Link>
+
+          <button
+            onClick={e => {
+              e.preventDefault();
+              axios
+                .delete(`/listings/delete_listing/${listings._id}`)
+                .then(res => {
+                  this.setState({ listings: res.data });
+                  alert("Listing Deleted!");
+                });
+            }}
+          >
+            Delete Listing
+          </button>
         </div>
       );
     });
     return (
-      <div>
+      <div className="Profile-container">
         {this.props.user ? (
-          <div>
-            <h2>Welcome, {this.props.user.username}</h2>
-            <h3>{this.props.user.email}</h3>
+          <div className="Secondary-container">
+            <section className="User-text">
+              <h2 className="Welcome">
+                Welcome, <b>{this.props.user.username}</b>
+              </h2>
+              <h3 className="Profile-email">Email: {this.props.user.email}</h3>
+            </section>
 
-            <h2>{userListingsToDisplay}</h2>
+            <h2 className="User-text2">Your Current Listings</h2>
+            <div className="User-listing-container">
+              {userListingsToDisplay}
+            </div>
           </div>
         ) : (
           <div></div>
         )}{" "}
         {/* Conditional Rendering */}
         <div>
-            <EditProfile />
+          <EditProfile />
         </div>
       </div>
     );
