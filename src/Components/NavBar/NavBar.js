@@ -28,9 +28,12 @@ class NavBar extends Component {
               <NavLink exact to="/NewListing">
                 Sell Your Car
               </NavLink>
-            ) : (
-              alert("please login")
-            )}
+            ) : 
+            // (
+            //   alert("please login")
+            // )
+            []
+            }
           </div>
 
           <div>
@@ -38,9 +41,12 @@ class NavBar extends Component {
               <NavLink exact to="/Profile">
                 Profile
               </NavLink>
-            ) : (
-              alert("please login")
-            )}
+            ) : 
+            // (
+            //   alert("please login")
+            // )
+            []
+            }
           </div>
         </div>
 
