@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./Featured.scss";
 
 export default class Featured extends Component {
@@ -11,6 +12,7 @@ export default class Featured extends Component {
       make: undefined,
       model: undefined,
       trim: undefined,
+      listingId: 0,
       photos: []
     };
   }
@@ -36,12 +38,14 @@ export default class Featured extends Component {
     const model = this.state.allListings[randomIndex].car.model;
     const trim = this.state.allListings[randomIndex].car.trim;
     const photos = this.state.allListings[randomIndex].photos;
+    const listingId = this.state.allListings[randomIndex]._id
 
     this.setState({
       year: year,
       make: make,
       model: model,
       trim: trim,
+      listingId: listingId,
       photos: [photos]
     });
     console.log(this.state.allListings);
@@ -58,6 +62,9 @@ export default class Featured extends Component {
             Model: {this.state.model}
           </div>
           <div className="featured-display-trim">Trim: {this.state.trim}</div>
+          <Link to={`/listing/${this.state.listingId}`}>
+            <button>View Listing</button>
+          </Link> 
         </div>
       </div>
     );

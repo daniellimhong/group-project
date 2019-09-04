@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import {withRouter} from 'react-router-dom'
 import './Register.scss';
 
 class Register extends Component {
@@ -24,8 +25,9 @@ class Register extends Component {
         email: email
       })
       .then(res => {
-          console.log(this.props)
-        this.props.getUser(res.data);
+        
+        this.props.history.push('/')
+
       });
   }
 
@@ -94,4 +96,4 @@ const connectInvoked = connect(
   mapDispatchToProps
 );
 
-export default connectInvoked(Register);
+export default withRouter(connectInvoked(Register));

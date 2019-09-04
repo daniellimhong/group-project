@@ -33,10 +33,20 @@ class Profile extends Component {
       return (
         <div key={index}>
           <p>Listing #{index + 1}</p>
+          <img className="Mapped-listing-pic" src={listings.photos} alt="" />
           <p>Year:{listings.car.year}</p>
           <p>Make:{listings.car.make}</p>
           <p>Model:{listings.car.model}</p>
           <p>Trim:{listings.car.trim}</p>
+          <button 
+          onClick={(e) => {
+            e.preventDefault()
+            axios.delete(`/listings/delete_listing/${listings._id}`).then(res => {
+              this.setState({listings: res.data})
+              alert("Listing Deleted!");
+            })
+          }}
+          >Delete Listing</button>
         </div>
       );
     });

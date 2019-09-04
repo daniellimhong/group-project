@@ -16,8 +16,6 @@ class EditProfile extends Component {
     };
   }
 
-  
-
   changeEmail(event) {
     event.preventDefault();
     const { email } = this.state;
@@ -60,7 +58,7 @@ class EditProfile extends Component {
     const { email } = this.state;
     return (
       <div>
-        Edit Profile: 
+        {/* Edit Profile:  */}
           {this.props.user ? (
         <div>
           {/* <p>Current Email: {this.props.user.email}</p> */}
