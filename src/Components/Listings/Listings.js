@@ -63,7 +63,7 @@ export default class Listings extends Component {
       listingsToDisplay = this.state.filteredListingsFromChild.map(
         (listings, index) => {
           return (
-            <div className="Listing" key={index}>
+            <div className="content" key={index}>
               <img className="Mapped-listing-pic" src={listings.photos} alt="" />
               <p>Price: ${listings.price}</p>
               <p>Year: {listings.car.year}</p>
@@ -74,8 +74,8 @@ export default class Listings extends Component {
 
             
               <Link to={`/listing/${listings._id}`}>
-            <button>View Listing</button>
-          </Link> 
+              <button>View Listing</button>
+              </Link> 
               <br />
             </div>
           );
