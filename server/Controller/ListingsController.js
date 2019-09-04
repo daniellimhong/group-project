@@ -73,8 +73,12 @@ module.exports = {
       if (index === -1) {
         console.log("Error: Check deleteListing in ListingsController");
       } else {
+        Listing.deleteOne(currentUser.listings[index]).then(res => {
+          Listing.save(err => {
+            console.log("User: " + currentUser.username + "deleted a listing")
+          })
+        })
         currentUser.listings.splice(index, 1);
-        console.log("User: " + currentUser.username + "deleted a listing");
       }
 
       currentUser.save(err => {

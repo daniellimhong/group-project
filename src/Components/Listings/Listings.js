@@ -44,7 +44,7 @@ export default class Listings extends Component {
       listingsToDisplay = this.state.Listings.map((listings, index) => {
         return (
           <div key={index}>
-            <img className="Mapped-listing-pic" src={listings.photos[0]} alt="" />
+            <img className="Mapped-listing-pic" src={listings.photos} alt="" />
             <p>Price: ${listings.price}</p>
             <p>Year: {listings.car.year}</p>
             <p>Make: {listings.car.make}</p>
@@ -63,7 +63,7 @@ export default class Listings extends Component {
         (listings, index) => {
           return (
             <div className="Listing" key={index}>
-              <img className="Mapped-listing-pic" src={listings.photos[0]} alt="" />
+              <img className="Mapped-listing-pic" src={listings.photos} alt="" />
 
               <p>Year: {listings.car.year}</p>
               <p>Make: {listings.car.make}</p>
