@@ -10,3 +10,9 @@
   background: #A9A9A9;
   z-index: -10;
 }
+
+@media screen and (max-width: 1126px) {
+  .App{
+    height: 100vh;
+  }
+}

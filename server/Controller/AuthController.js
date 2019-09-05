@@ -20,11 +20,11 @@ module.exports = {
         } else {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
+      }).catch(err => {
+        console.log(err);
       });
     });
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+      
   },
 
   register: (req, res) => {
