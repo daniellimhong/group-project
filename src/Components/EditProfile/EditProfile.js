@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
 import { withRouter } from "react-router-dom";
-import "./EditProfile.scss"
+import "./EditProfile.scss";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -57,11 +57,9 @@ class EditProfile extends Component {
     console.log(this.props.user)
     const { email } = this.state;
     return (
-      <div>
-        {/* Edit Profile:  */}
+      <div >
           {this.props.user ? (
-        <div>
-          {/* <p>Current Email: {this.props.user.email}</p> */}
+        <div className="EditProfile-container">
           <form onSubmit={e => this.changeEmail(e)}>
             <input
               placeholder="New Email"
@@ -74,15 +72,7 @@ class EditProfile extends Component {
                 )
               }
             />
-            {/* <input
-              placeholder="Confirm Password"
-              name="email"
-              value="email"
-              onChange={e =>
-                this.universalChangeHandler(e.target.name, e.target.value)
-              }
-            /> */}
-            <input type="submit" value="Submit" />
+            <input className="Change-email-button" type="submit" value="Submit" />
           </form>
           <button 
           onClick={(e) => this.toggleDeleteConfirmation(e)}>

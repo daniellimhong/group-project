@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web&display=swap");
+
+.Profile-container {
+  display: flex;
+  flex-direction: column;
+//   height: 100%;
+  width: 100vw;
+  font-family: Titillium Web, sans-serif;
+  // justify-content: center;
+  align-items: center;
+
+  .Secondary-container {
+    // display: inherit;
+    padding-top: 20px;
+    flex-wrap: wrap;
+
+    .User-text {
+      text-align: center;
+      font-size: 20px;
+
+      .Welcome {
+        padding: 10px;
+      }
+      .Profile-email {
+        padding-bottom: 20px;
+      }
+    }
+
+    .User-text2 {
+        padding-top: 50px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .User-listing-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+
+        .Profile-listing{
+            display: flex;
+            flex-direction: column;
+            max-width: 33vh;
+            height: 500px;
+            margin: 30px 30px;
+            border: 1px #EFEFEF solid;
+            background: #EFEFEF;
+            border-radius: 20px;
+            justify-content: center;
+
+
+            p{
+                margin: 5px;
+                text-align: center;
+            }
+
+            .Button-div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // justify-content: center;
+                // margin: 0 auto;
+
+                .View-Button-1{
+                    margin-right: 20px;
+                }
+            }
+
+            button{
+                margin-bottom: 20px;
+                background: black;
+                color: white;
+                font-family: 'F1';
+                border: none;
+                border-radius: 4px;
+                width: 200px;
+                // align-self: center;
+            }
+
+            // align-self: center;
+            // justify-content: space-between;
+        } 
+    }
+  }
+
+  
+}
