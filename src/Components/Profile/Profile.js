@@ -42,8 +42,9 @@ class Profile extends Component {
           <p>Model: {listings.car.model}</p>
           <p>Trim: {listings.car.trim}</p>
           
+          <div className="Button-div"> 
           <Link to={`/listing/${listings._id}`}>
-            <button>View Listing</button>
+            <button className="View-Button-1">View Listing</button>
           </Link>
 
           <button
@@ -59,6 +60,7 @@ class Profile extends Component {
           >
             Delete Listing
           </button>
+          </div>
         </div>
       );
     });
