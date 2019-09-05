@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { CONNECTION_STRING } = process.env;
-const {login} = require('../server/Controller/AuthController')
+const {login, logout} = require('../server/Controller/AuthController')
 const mongoose = require("mongoose")
 
 jest.setTimeout(60000);
@@ -40,3 +40,41 @@ describe("integration tests", () =>{
         login(req,res)
     })
 })
+
+describe("logout integration test", () =>{
+    let db;
+
+    beforeAll(async () => {
+        await connectDb()
+      });
+
+    afterAll(() => {
+        connection.close();
+        db.close();
+    });
+    
+    it("should logout user", async done =>{
+        const req = {
+            session: {
+                destroy: function(){
+                    req.session ={}
+                }
+            }
+        }
+        const res = {
+            send: await function(data){
+                // console.log("did I run?", data)
+                expect.stringContaining("logged out")
+                done();
+            },
+            status: await function(num){
+                console.log("did I run?", num)
+                expect(num).toBe(200)
+                return this;
+            }
+        }
+
+        logout(req, res)
+        
+    })
+});
