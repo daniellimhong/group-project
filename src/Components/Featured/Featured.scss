@@ -1,26 +1,72 @@
 img {
-    max-width: 700px;
-    max-height: 300px;
-    width: auto;
-    height: auto;
-    // margin: 0 auto;
+  max-width: 700px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  // margin: 0 auto;
 }
 
-.featured-display-photo{
-    margin: 0 auto;
+.featured-display-photo {
+  margin: 0 auto;
 }
 
-.featured-component-container{
+.featured-component-container {
+  display: flex;
+  width: 25vw;
+  justify-content: center;
+  align-items: center;
+  // flex-direction: row
+  margin: 0 auto;
+  height: auto;
+}
+
+.featured-car-text {
+    width: 100px;
+}
+
+.car-properties {
+  // margin: 0 auto;
+  // width: auto;
+  justify-content: left;
+}
+
+.view-listing-button {
+  // width: 100px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1126px) {
+  .featured-component-container {
     display: flex;
+    flex-direction: column;
     width: 25vw;
     justify-content: center;
     align-items: center;
     // flex-direction: row
     margin: 0 auto;
     height: auto;
-}
+  }
 
-.car-properties{
-    margin: 0 auto;
+  .featured-photo {
+    max-width: 414px;
+    max-height: 100%;
     width: auto;
+    height: auto;
+  }
+
+  .car-properties {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .view-listing-button {
+    // width: 100px;
+    margin-right: 10px;
+  }
+
+  .featured-display {
+    width: auto;
+  }
 }

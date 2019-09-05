@@ -97,7 +97,7 @@ class NewListing extends Component {
         <div className="title"><h1>Add a new listing</h1></div>
         <div className="newListing-container">
           <form className="newlisting" onSubmit={this.addListing}>
-            
+            <div className='all-fields'><div>All fields are required</div></div>
             <input
               type="number"
               placeholder="Year"

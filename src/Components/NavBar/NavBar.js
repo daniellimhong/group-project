@@ -18,12 +18,17 @@ class NavBar extends Component {
     return (
       <div className="navbar-container">
         <div className="links-container">
-          <div>
+          <div className='home-button'>
+            <NavLink exact to="/" activeClassName="active">
+              Home
+            </NavLink>
+          </div>
+          <div className='for-sale-button'>
             <NavLink exact to="/Listings" activeClassName="active">
               Cars For Sale
             </NavLink>
           </div>
-          <div>
+          <div className='sell-car-button'>
             {this.props.user ? (
               <NavLink exact to="/NewListing">
                 Sell Your Car
@@ -33,7 +38,7 @@ class NavBar extends Component {
             )}
           </div>
 
-          <div>
+          <div className='profile-button'>
             {this.props.user ? (
               <NavLink exact to="/Profile">
                 Profile
