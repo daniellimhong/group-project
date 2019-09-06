@@ -31,9 +31,12 @@ class EditProfile extends Component {
   deleteProfile(event){
       event.preventDefault();
       axios.delete(`/auth/delete_user/${this.props.user.id}`).then(res => {
-          this.props.getUser(res.data);
+          this.props.getUser(null);
           this.props.history.push("/")
       })
+      // .then(res => {
+      //   axios.get('/auth/logout')
+      // })
   }
 
   toggleDeleteConfirmation = (e) => {

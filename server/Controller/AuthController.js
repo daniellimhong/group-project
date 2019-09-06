@@ -25,9 +25,13 @@ module.exports = {
       }).catch(err => {
         console.log(err);
       });
+<<<<<<< HEAD
     }).catch(err => {
       console.log(err)
     })
+=======
+    });
+>>>>>>> origin
       
   },
 
@@ -70,9 +74,11 @@ module.exports = {
     });
   },
 
-  logout: (req, res) => {
-    req.session.destroy();
-    res.status(200).send("user logged out, userSession destroyed");
+  logout: async (req, res) => {
+    await req.session.destroy();
+    res
+      .status(200)
+      .send("user logged out, userSession destroyed");
   },
 
   userSession: (req, res) => {

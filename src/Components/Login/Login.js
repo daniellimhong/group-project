@@ -14,9 +14,8 @@ class Login extends Component {
       
     };
   }
-
   
-  login() {
+    login() {
     const { username, password } = this.state;
     axios
       .post(`/auth/login`, { username: username, password: password })
@@ -26,13 +25,11 @@ class Login extends Component {
           alert(res.data.message);
         } else {
           this.props.getUser(res.data);
-        
-          
         }
       });
   }
 
-  logout =() => {
+  logout(){
     axios.get('/auth/logout').then(res => {
       this.props.getUser(null)
       this.props.history.push('/')
@@ -104,3 +101,4 @@ const connectInvoked = connect(
 );
 
 export default withRouter(connectInvoked(Login));
+

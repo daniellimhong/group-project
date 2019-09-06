@@ -1,5 +1,7 @@
 const models = require("../collections/Users");
 const { User, Listing } = models;
+const utils1 = require('../../src/thomas-unit-tests/functions')
+const utils2 = require("../../src/daniel-unit-tests/functions")
 
 module.exports = {
   getAllListings: (req, res, next) => {
@@ -13,6 +15,10 @@ module.exports = {
     const { car, price, zip, photos } = req.body;
     const newListing = new Listing({ car, price, zip, photos });
     console.log(req.body)
+
+    utils.isValidNumber(price);
+    utils.isValidNumber(zip);
+
     newListing.save(err => {
       User.findById(req.session.user.id).then(currentUser => {
         currentUser.listings.push(newListing);
@@ -50,11 +56,12 @@ module.exports = {
       if (index === -1) {
         console.log("Error: Check editListing in ListingsController");
       } else {
-        currentUser.listings[index] = {
+        utils.testFunc(currentUser, index, {
           car: car,
           price: price,
           zip: zip
-        };
+        })
+        
       }
 
       currentUser.save(err => {
