@@ -23,15 +23,11 @@ module.exports = {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
       }).catch(err => {
-<<<<<<< HEAD
-        console.log(err)
-      })
-    })
-=======
         console.log(err);
       });
-    });
->>>>>>> fb21a4e94433cd47286ed5175c4f9c328c35f5e2
+    }).catch(err => {
+      console.log(err)
+    })
       
   },
 
@@ -49,7 +45,10 @@ module.exports = {
           if (err) {
             res.status(401).send({
               message: "That username or Email is already registered"
-            });
+            })
+            // .catch(err => {
+            //   console.log(err)
+            // })
           }
 
           User.find({ email: email }).then(user => {
@@ -61,7 +60,13 @@ module.exports = {
             res.status(200).send(req.session.user);
           });
         });
-      });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+    .catch(err => {
+      console.log(err)
     });
   },
 

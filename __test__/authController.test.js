@@ -3,7 +3,7 @@ const { CONNECTION_STRING } = process.env;
 const {login} = require('../server/Controller/AuthController')
 const mongoose = require("mongoose")
 
-jest.setTimeout(60000);
+jest.setTimeout(600000);
 
 function connectDb(){
     return mongoose.connect(CONNECTION_STRING, {useNewUrlParser: true, useCreateIndex: true});

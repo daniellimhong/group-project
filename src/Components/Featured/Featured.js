@@ -49,6 +49,7 @@ export default class Featured extends Component {
       photos: [photos]
     });
     console.log(this.state.allListings);
+    return randomIndex
   }
 
   render() {
