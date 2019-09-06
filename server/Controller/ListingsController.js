@@ -1,5 +1,6 @@
 const models = require("../collections/Users");
 const { User, Listing } = models;
+const utils = require("../../src/daniel-unit-tests/functions")
 
 module.exports = {
   getAllListings: (req, res, next) => {
@@ -13,6 +14,10 @@ module.exports = {
     const { car, price, zip, photos } = req.body;
     const newListing = new Listing({ car, price, zip, photos });
     console.log(req.body)
+
+    utils.isValidNumber(price);
+    utils.isValidNumber(zip);
+
     newListing.save(err => {
       User.findById(req.session.user.id).then(currentUser => {
         currentUser.listings.push(newListing);

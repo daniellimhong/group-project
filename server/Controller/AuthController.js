@@ -23,15 +23,9 @@ module.exports = {
           res.status(200).send({message: `Incorrect password. Try again!`}); // change this to "wrong username or password" once it is working
         }
       }).catch(err => {
-<<<<<<< HEAD
-        console.log(err)
-      })
-    })
-=======
         console.log(err);
       });
     });
->>>>>>> fb21a4e94433cd47286ed5175c4f9c328c35f5e2
       
   },
 
