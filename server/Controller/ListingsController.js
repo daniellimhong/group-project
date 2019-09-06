@@ -1,6 +1,6 @@
 const models = require("../collections/Users");
 const { User, Listing } = models;
-
+const utils = require('../../src/thomas-unit-tests/functions')
 module.exports = {
   getAllListings: (req, res, next) => {
     Listing.find().then(listings => {
@@ -50,11 +50,12 @@ module.exports = {
       if (index === -1) {
         console.log("Error: Check editListing in ListingsController");
       } else {
-        currentUser.listings[index] = {
+        utils.testFunc(currentUser, index, {
           car: car,
           price: price,
           zip: zip
-        };
+        })
+        
       }
 
       currentUser.save(err => {
