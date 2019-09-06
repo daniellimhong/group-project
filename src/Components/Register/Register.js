@@ -24,10 +24,12 @@ class Register extends Component {
         password: password,
         email: email
       })
-      .then(res => {
-        
-        this.props.history.push('/')
-
+      .then(() => {
+        axios.post(`/auth/login`, { username: username, password: password })
+        .then(res => {
+            this.props.getUser(res.data);
+            this.props.history.push('/')
+        })
       });
   }
 
