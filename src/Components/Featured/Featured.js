@@ -56,7 +56,7 @@ export default class Featured extends Component {
     return (
       <div className="featured-component-container">
         <div className='featured-car-text'>Featured Car </div>
-        <img src={this.state.photos} className='featured-photo'/>
+        <img src={this.state.photos} className='featured-photo' alt="featured"/>
         <div className="car-properties">
           <div className="featured-display">Year: {this.state.year}</div>
           <div className="featured-display">Make: {this.state.make}</div>

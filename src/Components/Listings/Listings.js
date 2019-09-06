@@ -37,13 +37,11 @@ export default class Listings extends Component {
   };
 
   render() {
-    // console.log("filteredFromChild", this.state.filteredListingsFromChild);
-
     let listingsToDisplay;
     if (!this.state.filteredListingsFromChild) {
       listingsToDisplay = this.state.Listings.map((listings, index) => {
         return (
-          <div key={index} className='wtf'>
+          <div key={index} className='mapped-listing-container'>
             <img className="Mapped-listing-pic" src={listings.photos} alt="" />
             <p>Price: ${listings.price}</p>
             <p>Year: {listings.car.year}</p>

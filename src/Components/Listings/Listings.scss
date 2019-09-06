@@ -1,7 +1,7 @@
 .Listings-main-container {
   display: flex;
-  height: 82vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
@@ -12,13 +12,7 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 50px;
-
-    // div {
-    //   display: flex;
-    //   flex-direction: row;
-    // //   max-width: 33vw;
-    //   align-items: center;
-    // }
+    width: 500px;
 
     p {
       margin: 5px;
@@ -36,10 +30,12 @@
     }
   }
 
-  .wtf {
+  .mapped-listing-container {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+    max-height: 425px;
+    max-width: 600px;
     height: auto;
     width: auto;
     justify-content: center;
@@ -59,12 +55,10 @@
 @media screen and (max-width: 1126px) {
   .listings-main-container {
     display: flex;
-    // height: 100vh;
-    width: 100vw;
+    width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    overflow: scroll;
   }
 
   .listing-display {
@@ -75,9 +69,6 @@
     align-items: center;
     overflow: scroll;
   }
-  // .search-form{
-  //     width: 50vw
-  // }
 
   .wtf {
     display: flex;

@@ -11,7 +11,6 @@ class Login extends Component {
     this.state = {
       username: "",
       password: ""
-      
     };
   }
   
@@ -20,21 +19,24 @@ class Login extends Component {
     axios
       .post(`/auth/login`, { username: username, password: password })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.message) {
           alert(res.data.message);
         } else {
           this.props.getUser(res.data);
+          console.log(this.props.getUser)
         }
       });
   }
 
-  logout(){
+  logout = () => {
     axios.get('/auth/logout').then(res => {
+      console.log(this.props)
       this.props.getUser(null)
       this.props.history.push('/')
     })
   }
+ 
 
   reDirecttoRegister = () => {
     this.props.history.push('/register')
