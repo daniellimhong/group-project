@@ -3,6 +3,8 @@ const { CONNECTION_STRING } = process.env;
 const { register } = require("../server/Controller/AuthController");
 const mongoose = require("mongoose");
 
+// This test will add a new user to the live database, it will need to be deleted after every run
+
 jest.setTimeout(60000);
 
 function connectDb() {
