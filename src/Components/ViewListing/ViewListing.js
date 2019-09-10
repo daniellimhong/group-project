@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import "./ViewListing.scss";
 
 class ViewListing extends Component {
   constructor(props) {
@@ -38,39 +39,43 @@ class ViewListing extends Component {
     const { listing, userInfo } = this.state;
 
     return (
-      <div>
+      <div className="View-listing-container">
         {this.state.listing ? (
-          <div>
-            <img className="View-listing-pic" src={listing.photos} alt="" />
+          <div className="View-listing">
+            <img className="Mapped-listing-pic" src={listing.photos} alt="" />
             <p>Price: ${listing.price}</p>
-            <p> Zip: {listing.zip} </p>
+           
             {listing && listing.car && userInfo && userInfo.username && (
               <div>
                 <p>Year: {listing.car.year} </p>
                 <p>Make: {listing.car.make}</p>
                 <p>Model: {listing.car.model}</p>
                 <p>Trim: {listing.car.trim}</p>
+                <p> Zip: {listing.zip} </p>
                 <p>Seller: {userInfo.username}</p>
                 <p>Date Added: {listing.date_added}</p>
+                <div>
+                  <button
+                    className="Button-div"
+                    onClick={() => {
+                      window.open(
+                        `mailto:${userInfo.email}` +
+                          "?subject=" +
+                          `I am interested in your ${listing.car.year} ${listing.car.make} ${listing.car.model}!` +
+                          "&body=" +
+                          `Hello, ${userInfo.username}!`
+                      );
+                    }}
+                  >
+                    Contact Seller
+                  </button>
+                </div>
               </div>
             )}
           </div>
         ) : (
           <div></div>
         )}{" "}
-        <button
-          onClick={() => {
-            window.open(
-              `mailto:${userInfo.email}` +
-                "?subject=" +
-                `I am interested in your ${listing.car.year} ${listing.car.make} ${listing.car.model}!` +
-                "&body=" +
-                `Hello, ${userInfo.username}!`
-            );
-          }}
-        >
-          Contact Seller
-        </button>
         {/* <Mailto email={userInfo.email}>
           Contact Seller
         </Mailto> */}

@@ -29,7 +29,7 @@ class Login extends Component {
       });
   }
 
-  logout(){
+  logout = () => {
     axios.get('/auth/logout').then(res => {
       this.props.getUser(null)
       this.props.history.push('/')
