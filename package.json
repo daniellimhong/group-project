@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "aws-sdk": "^2.520.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.5.5",
     "dotenv": "^8.1.0",
